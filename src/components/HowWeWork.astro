@@ -52,14 +52,9 @@ const {
 
     <!-- Process Steps -->
     <div class="process-grid">
-      {steps.map((step, index) => (
-        <div class="process-card relative">
-          {/* Connecting line */}
-          {index < steps.length - 1 && (
-            <div class="hidden lg:block absolute top-8 left-1/2 w-full h-0.5 bg-primary-700"></div>
-          )}
-
-          <div class="process-card-number relative z-10">
+      {steps.map((step) => (
+        <div class="process-card">
+          <div class="process-card-number">
             {step.number}
           </div>
           <h3 class="process-card-title text-white">{step.title}</h3>

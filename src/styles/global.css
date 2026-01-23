@@ -602,6 +602,80 @@ body {
 }
 
 /* ============================================
+   FLOATING SHAPES - Reużywalne dla wzorca CTA
+   ============================================ */
+
+.floating-shapes {
+  @apply absolute inset-0 overflow-hidden pointer-events-none;
+}
+
+.floating-shape-accent {
+  @apply absolute w-72 h-72 rounded-full blur-3xl;
+  background: var(--color-accent-500);
+  opacity: 0.1;
+}
+
+.floating-shape-primary {
+  @apply absolute w-96 h-96 rounded-full blur-3xl;
+  background: var(--color-primary-400);
+  opacity: 0.1;
+}
+
+.floating-shape-white {
+  @apply absolute rounded-full blur-3xl;
+  background: white;
+  opacity: 0.05;
+}
+
+/* ============================================
+   GLASS BADGE - Reużywalny dla obu wzorców
+   ============================================ */
+
+.glass-badge {
+  @apply inline-flex items-center px-4 py-2 rounded-full text-sm font-medium;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+/* ============================================
+   PREMIUM GLASS CARD - Dla wzorca CTA
+   ============================================ */
+
+.premium-glass-container {
+  @apply max-w-6xl mx-auto relative z-10;
+}
+
+.premium-glass-card {
+  @apply p-8 rounded-2xl relative transition-all duration-300;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.premium-glass-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   IMAGE OVERLAY - Dla WhyUs z ciemnym overlayem
+   ============================================ */
+
+.dark-image-overlay::before {
+  content: "";
+  @apply absolute inset-0 z-10;
+  background: linear-gradient(135deg,
+    rgba(15, 23, 42, 0.85) 0%,
+    rgba(51, 176, 210, 0.3) 100%);
+}
+
+.dark-image-overlay img {
+  @apply w-full h-auto object-cover;
+}
+
+/* ============================================
    STOPKA - Nowoczesna z zaokrągleniami
    ============================================ */
 

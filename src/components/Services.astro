@@ -65,27 +65,29 @@ const icons: Record<string, string> = {
 };
 ---
 
-<section class="section" id="uslugi">
+<section class="section-dark" id="uslugi">
   <div class="container">
     <!-- Section Header -->
     <div class="text-center mb-16">
-      <span class="text-label mb-4 block">Co oferujemy</span>
-      <h2 class="heading-2 mb-4">{title}</h2>
-      <p class="text-body max-w-2xl mx-auto">{subtitle}</p>
-      <div class="divider-center mt-6"></div>
+      <span class="text-xs font-semibold uppercase tracking-wider text-accent-400 mb-4 block">
+        Co oferujemy
+      </span>
+      <h2 class="heading-2 text-white mb-4">{title}</h2>
+      <p class="text-primary-200 text-lg max-w-2xl mx-auto">{subtitle}</p>
     </div>
 
     <!-- Services Grid -->
-    <div class="services-grid">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
       {services.map((service) => (
-        <article class="service-card">
-          <div class="service-card-icon">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={icons[service.icon] || icons.calculator} />
+        <article class="process-card">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-300"
+               style="background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700)); box-shadow: 0 10px 30px rgba(51, 176, 210, 0.3);">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={icons[service.icon] || icons.calculator} />
           </div>
-          <h3 class="service-card-title">{service.title}</h3>
-          <p class="service-card-description">{service.description}</p>
+          <h3 class="text-xl md:text-2xl font-semibold text-white mb-4">{service.title}</h3>
+          <p class="text-primary-200 text-base leading-relaxed mb-6">{service.description}</p>
           {service.href && (
-            <a href={service.href} class="service-card-link">
+            <a href={service.href} class="inline-flex items-center gap-2 text-accent-400 font-semibold text-sm transition-all duration-300 hover:gap-3">
               Dowiedz się więcej
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>

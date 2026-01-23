@@ -27,11 +27,18 @@ const {
 } = Astro.props;
 ---
 
-<section class="why-section" id="dlaczego-my">
-  <div class="container">
-    <div class="why-grid">
+<section class="cta-section" id="dlaczego-my">
+  <!-- Decorative floating shapes -->
+  <div class="floating-shapes">
+    <div class="floating-shape-accent" style="top: 10%; left: 10%;"></div>
+    <div class="floating-shape-primary" style="bottom: 10%; right: 10%;"></div>
+    <div class="floating-shape-white w-[600px] h-[600px]" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+  </div>
+
+  <div class="container relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       <!-- Image -->
-      <div class="why-image">
+      <div class="relative rounded-3xl overflow-hidden dark-image-overlay">
         <img
           src={imageSrc}
           alt={imageAlt}
@@ -41,33 +48,40 @@ const {
       </div>
 
       <!-- Content -->
-      <div class="why-content">
-        <span class="text-label">{subtitle}</span>
-        <h2 class="heading-2 mt-2">{title}</h2>
-        <div class="divider mt-4"></div>
-        <p class="text-body mt-6">{description}</p>
+      <div>
+        <span class="glass-badge mb-6">
+          <svg class="w-5 h-5 mr-2 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+          {subtitle}
+        </span>
+        <h2 class="heading-2 text-white mb-4">{title}</h2>
+        <p class="text-primary-100 text-lg leading-relaxed mb-8">{description}</p>
 
         <!-- Features Grid -->
-        <div class="grid grid-cols-2 gap-6 mt-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {features.map((feature) => (
-            <div class="flex items-start gap-3">
-              <div class="w-10 h-10 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-              </div>
-              <div>
-                <p class="font-semibold text-dark">{feature.title}</p>
-                <p class="text-small">{feature.description}</p>
+            <div class="premium-glass-card">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                     style="background: linear-gradient(135deg, var(--color-accent-500), var(--color-accent-600));">
+                  <svg class="w-6 h-6 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-bold text-white">{feature.title}</p>
+                  <p class="text-sm text-primary-200">{feature.description}</p>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
         {ctaHref && (
-          <a href={ctaHref} class="btn-primary mt-8">
+          <a href={ctaHref} class="btn-accent btn-lg group mt-8">
             {ctaText}
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
             </svg>
           </a>
