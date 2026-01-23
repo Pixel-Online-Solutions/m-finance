@@ -1,0 +1,99 @@
+---
+interface Service {
+  icon: string;
+  title: string;
+  description: string;
+  href?: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  services?: Service[];
+}
+
+const {
+  title = "Nasze Usługi",
+  subtitle = "Kompleksowa obsługa księgowa dostosowana do Twoich potrzeb",
+  services = [
+    {
+      icon: "calculator",
+      title: "Pełna Księgowość",
+      description: "Prowadzenie ksiąg rachunkowych zgodnie z obowiązującymi przepisami. Sporządzanie sprawozdań finansowych i deklaracji podatkowych.",
+      href: "/ksiegowosc-dla-firm"
+    },
+    {
+      icon: "document",
+      title: "Rozliczenia Podatkowe",
+      description: "Kompleksowe rozliczenia PIT, CIT, VAT. Optymalizacja podatkowa i doradztwo w zakresie przepisów podatkowych.",
+      href: "/klient-indywidualny"
+    },
+    {
+      icon: "briefcase",
+      title: "Zakładanie Działalności",
+      description: "Pomoc przy rejestracji firmy, wybór formy opodatkowania, przygotowanie dokumentów założycielskich.",
+      href: "/klient-indywidualny"
+    },
+    {
+      icon: "shield",
+      title: "ZUS i Kadry",
+      description: "Obsługa kadrowo-płacowa, rozliczenia z ZUS, prowadzenie akt osobowych i dokumentacji pracowniczej.",
+      href: "/ksiegowosc-dla-firm"
+    },
+    {
+      icon: "chart",
+      title: "Analizy Finansowe",
+      description: "Przygotowanie raportów i analiz finansowych wspierających podejmowanie strategicznych decyzji biznesowych.",
+      href: "/ksiegowosc-dla-firm"
+    },
+    {
+      icon: "lock",
+      title: "Poufność i Bezpieczeństwo",
+      description: "Gwarantujemy pełną poufność danych. Stosujemy najwyższe standardy bezpieczeństwa informacji.",
+      href: "/o-nas"
+    }
+  ]
+} = Astro.props;
+
+const icons: Record<string, string> = {
+  calculator: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>`,
+  document: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>`,
+  briefcase: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>`,
+  shield: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>`,
+  chart: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>`,
+  lock: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>`
+};
+---
+
+<section class="section" id="uslugi">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="text-label mb-4 block">Co oferujemy</span>
+      <h2 class="heading-2 mb-4">{title}</h2>
+      <p class="text-body max-w-2xl mx-auto">{subtitle}</p>
+      <div class="divider-center mt-6"></div>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="services-grid">
+      {services.map((service) => (
+        <article class="service-card">
+          <div class="service-card-icon">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={icons[service.icon] || icons.calculator} />
+          </div>
+          <h3 class="service-card-title">{service.title}</h3>
+          <p class="service-card-description">{service.description}</p>
+          {service.href && (
+            <a href={service.href} class="service-card-link">
+              Dowiedz się więcej
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

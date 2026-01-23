@@ -1,0 +1,78 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  features?: { title: string; description: string }[];
+  imageSrc?: string;
+  imageAlt?: string;
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+const {
+  title = "Dlaczego M-Finance?",
+  subtitle = "Twój partner w finansach",
+  description = "Jesteśmy zespołem doświadczonych księgowych, którzy stawiają na indywidualne podejście do każdego klienta. Nasza wiedza i zaangażowanie gwarantują profesjonalną obsługę na najwyższym poziomie.",
+  features = [
+    { title: "20+ lat doświadczenia", description: "w branży księgowej" },
+    { title: "500+ zadowolonych", description: "klientów biznesowych" },
+    { title: "Certyfikowany zespół", description: "z aktualnymi uprawnieniami" },
+    { title: "Indywidualne podejście", description: "do każdego klienta" }
+  ],
+  imageSrc = "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&auto=format&fit=crop&q=80",
+  imageAlt = "Profesjonalne biuro rachunkowe M-Finance",
+  ctaText = "Poznaj nas bliżej",
+  ctaHref = "/o-nas"
+} = Astro.props;
+---
+
+<section class="why-section" id="dlaczego-my">
+  <div class="container">
+    <div class="why-grid">
+      <!-- Image -->
+      <div class="why-image">
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          loading="lazy"
+          class="aspect-[4/3] object-cover"
+        />
+      </div>
+
+      <!-- Content -->
+      <div class="why-content">
+        <span class="text-label">{subtitle}</span>
+        <h2 class="heading-2 mt-2">{title}</h2>
+        <div class="divider mt-4"></div>
+        <p class="text-body mt-6">{description}</p>
+
+        <!-- Features Grid -->
+        <div class="grid grid-cols-2 gap-6 mt-8">
+          {features.map((feature) => (
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-semibold text-dark">{feature.title}</p>
+                <p class="text-small">{feature.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {ctaHref && (
+          <a href={ctaHref} class="btn-primary mt-8">
+            {ctaText}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

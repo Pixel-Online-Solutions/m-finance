@@ -1,0 +1,773 @@
+@import "tailwindcss";
+
+/* ============================================
+   M-FINANCE - NOWOCZESNY DESIGN
+   Profesjonalny, nowoczesny styl
+   ============================================ */
+
+@theme {
+  /* Kolory główne - turkusowy #33b0d2 */
+  --color-primary-50: #e6f7fb;
+  --color-primary-100: #cceff7;
+  --color-primary-200: #99dfef;
+  --color-primary-300: #66cfe7;
+  --color-primary-400: #33bfdf;
+  --color-primary-500: #33b0d2;
+  --color-primary-600: #2a9bba;
+  --color-primary-700: #217a93;
+  --color-primary-800: #185a6c;
+  --color-primary-900: #0f3945;
+  --color-primary-950: #081f26;
+
+  /* Kolory akcentu - złoty */
+  --color-accent-50: #fff9e6;
+  --color-accent-100: #fff0bf;
+  --color-accent-200: #ffe699;
+  --color-accent-300: #ffd966;
+  --color-accent-400: #ffcc33;
+  --color-accent-500: #d4a50a;
+  --color-accent-600: #b38a08;
+  --color-accent-700: #8c6c06;
+  --color-accent-800: #664e04;
+  --color-accent-900: #403102;
+
+  /* Kolory neutralne */
+  --color-dark: #0f172a;
+  --color-dark-light: #1e293b;
+  --color-gray: #64748b;
+  --color-gray-light: #94a3b8;
+  --color-light: #f8fafc;
+  --color-white: #ffffff;
+
+  /* Fonty */
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-heading: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+
+  /* Animacje */
+  --animate-fade-in: fade-in 0.6s ease-out;
+  --animate-slide-up: slide-up 0.8s ease-out;
+  --animate-slide-down: slide-down 0.4s ease-out;
+  --animate-scale-in: scale-in 0.5s ease-out;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slide-down {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(51, 176, 210, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(51, 176, 210, 0.5); }
+  }
+
+  @keyframes scroll-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+}
+
+/* ============================================
+   STYLE BAZOWE
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-sans text-dark bg-white antialiased;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   KONTENERY I LAYOUT
+   ============================================ */
+
+.container {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.container-narrow {
+  @apply w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.section {
+  @apply py-20 md:py-28;
+}
+
+.section-dark {
+  @apply bg-dark text-white py-20 md:py-28;
+}
+
+.section-light {
+  @apply bg-light py-20 md:py-28;
+}
+
+/* ============================================
+   TYPOGRAFIA
+   ============================================ */
+
+.heading-1 {
+  @apply font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight;
+}
+
+.heading-2 {
+  @apply font-heading text-3xl md:text-4xl font-bold leading-tight;
+}
+
+.heading-3 {
+  @apply font-heading text-2xl md:text-3xl font-semibold leading-snug;
+}
+
+.heading-4 {
+  @apply font-heading text-xl md:text-2xl font-semibold;
+}
+
+.text-body {
+  @apply text-base md:text-lg text-gray leading-relaxed;
+}
+
+.text-small {
+  @apply text-sm text-gray-light;
+}
+
+.text-label {
+  @apply text-xs font-semibold uppercase tracking-wider text-primary-500;
+}
+
+/* ============================================
+   PRZYCISKI - Nowoczesny styl
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn:hover::before {
+  opacity: 1;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 px-7 py-3.5
+         font-semibold text-sm rounded-xl transition-all duration-300
+         cursor-pointer border-2 border-transparent
+         bg-primary-600 text-white
+         hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-600/30 hover:-translate-y-0.5
+         active:scale-95;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 px-7 py-3.5
+         font-semibold text-sm rounded-xl transition-all duration-300
+         cursor-pointer border-2
+         bg-transparent border-primary-600 text-primary-600
+         hover:bg-primary-600 hover:text-white hover:-translate-y-0.5
+         active:scale-95;
+}
+
+.btn-accent {
+  @apply inline-flex items-center justify-center gap-2 px-7 py-3.5
+         font-semibold text-sm rounded-xl transition-all duration-300
+         cursor-pointer border-2 border-transparent
+         bg-accent-500 text-dark
+         hover:bg-accent-400 hover:shadow-xl hover:shadow-accent-500/30 hover:-translate-y-0.5
+         active:scale-95;
+}
+
+.btn-white {
+  @apply inline-flex items-center justify-center gap-2 px-7 py-3.5
+         font-semibold text-sm rounded-xl transition-all duration-300
+         cursor-pointer border-2 border-transparent
+         bg-white text-dark
+         hover:bg-light hover:shadow-xl hover:-translate-y-0.5
+         active:scale-95;
+}
+
+.btn-dark {
+  @apply inline-flex items-center justify-center gap-2 px-7 py-3.5
+         font-semibold text-sm rounded-xl transition-all duration-300
+         cursor-pointer border-2 border-transparent
+         bg-dark text-white
+         hover:bg-dark-light hover:shadow-xl hover:-translate-y-0.5
+         active:scale-95;
+}
+
+/* Glass Button */
+.btn-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.btn-lg {
+  @apply px-8 py-4 text-base;
+}
+
+.btn-sm {
+  @apply px-5 py-2.5 text-xs;
+}
+
+/* ============================================
+   NAWIGACJA - Nowoczesna z zaokrągleniami
+   ============================================ */
+
+.navbar {
+  @apply fixed top-0 left-0 right-0 z-50;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navbar-container {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20;
+}
+
+.navbar-logo {
+  @apply font-heading font-bold text-2xl;
+  background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-800));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.navbar-menu {
+  @apply hidden lg:flex items-center gap-1;
+}
+
+.navbar-link {
+  @apply text-sm font-medium text-dark transition-all duration-300
+         px-4 py-2 rounded-lg
+         hover:text-primary-600 hover:bg-primary-50;
+}
+
+.navbar-link.active {
+  @apply text-primary-600 bg-primary-50;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  @apply lg:hidden fixed inset-0 top-20 bg-white z-40
+         flex flex-col p-6 gap-2 transform transition-transform duration-300;
+}
+
+.mobile-menu.hidden {
+  @apply translate-x-full;
+}
+
+.mobile-menu.open {
+  @apply translate-x-0;
+}
+
+.mobile-menu-link {
+  @apply text-lg font-medium text-dark py-4 px-4 rounded-xl
+         transition-all hover:text-primary-600 hover:bg-primary-50;
+}
+
+/* ============================================
+   HERO SLIDER - Profesjonalny
+   ============================================ */
+
+.hero-slider {
+  @apply relative w-full overflow-hidden;
+  height: 100vh;
+  min-height: 600px;
+  max-height: 900px;
+}
+
+.slider-container {
+  @apply relative w-full h-full;
+}
+
+.slide {
+  @apply absolute inset-0 w-full h-full opacity-0 transition-opacity duration-1000;
+  background-size: cover;
+  background-position: center;
+}
+
+.slide.active {
+  @apply opacity-100;
+}
+
+.slide-overlay {
+  @apply absolute inset-0;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 57, 69, 0.88) 0%,
+    rgba(33, 122, 147, 0.78) 50%,
+    rgba(51, 176, 210, 0.65) 100%
+  );
+}
+
+.slide-content {
+  @apply absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4;
+  z-index: 10;
+}
+
+.slide-badge {
+  @apply inline-flex items-center px-5 py-2 rounded-full text-sm font-medium mb-8;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: slide-down 0.8s ease-out;
+}
+
+.slide-title {
+  @apply font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6;
+  animation: slide-up 0.8s ease-out 0.2s both;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.slide-subtitle {
+  @apply text-lg md:text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto mb-10;
+  animation: slide-up 0.8s ease-out 0.4s both;
+}
+
+.slide-buttons {
+  @apply flex flex-col sm:flex-row items-center gap-4;
+  animation: slide-up 0.8s ease-out 0.6s both;
+}
+
+/* Slider Navigation */
+.slider-dots {
+  @apply absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 z-20;
+}
+
+.slider-dot {
+  @apply w-3 h-3 rounded-full transition-all duration-300 cursor-pointer;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+}
+
+.slider-dot:hover {
+  background: rgba(255, 255, 255, 0.7);
+  transform: scale(1.2);
+}
+
+.slider-dot.active {
+  @apply w-10;
+  background: var(--color-accent-500);
+  border-radius: 1rem;
+}
+
+/* Slider Arrows */
+.slider-arrow {
+  @apply absolute top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-2xl
+         flex items-center justify-center text-white cursor-pointer
+         transition-all duration-300;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.slider-arrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.slider-arrow-prev {
+  @apply left-6;
+}
+
+.slider-arrow-next {
+  @apply right-6;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  @apply absolute bottom-8 right-8 flex flex-col items-center gap-2 text-white/70 text-xs z-20;
+  animation: float 3s ease-in-out infinite;
+}
+
+.scroll-mouse {
+  @apply w-6 h-10 rounded-full border-2 border-white/30 flex justify-center pt-2;
+}
+
+.scroll-wheel {
+  @apply w-1 h-2 bg-white/70 rounded-full;
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+/* ============================================
+   KARTY USŁUG - Nowoczesne z zaokrągleniami
+   ============================================ */
+
+.services-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+}
+
+.service-card {
+  @apply bg-white rounded-3xl p-8 transition-all duration-500;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(51, 176, 210, 0.12);
+  border-color: rgba(51, 176, 210, 0.1);
+}
+
+.service-card-icon {
+  @apply w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-primary-600;
+  background: linear-gradient(135deg, var(--color-primary-50), var(--color-primary-100));
+}
+
+.service-card-title {
+  @apply font-heading text-xl md:text-2xl font-semibold text-dark mb-4;
+}
+
+.service-card-description {
+  @apply text-base text-gray leading-relaxed mb-6;
+}
+
+.service-card-link {
+  @apply inline-flex items-center gap-2 text-primary-600 font-semibold
+         text-sm transition-all duration-300;
+}
+
+.service-card-link:hover {
+  gap: 1rem;
+}
+
+/* ============================================
+   SEKCJA "DLACZEGO MY" - Nowoczesna
+   ============================================ */
+
+.why-section {
+  @apply bg-light py-20 md:py-28 relative overflow-hidden;
+}
+
+.why-section::before {
+  content: "";
+  @apply absolute top-0 right-0 w-1/2 h-full;
+  background: linear-gradient(135deg, transparent 0%, rgba(51, 176, 210, 0.03) 100%);
+  border-radius: 0 0 0 100px;
+}
+
+.why-grid {
+  @apply grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10;
+}
+
+.why-image {
+  @apply rounded-3xl overflow-hidden relative;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+}
+
+.why-image::before {
+  content: "";
+  @apply absolute inset-0 z-10;
+  background: linear-gradient(135deg, rgba(51, 176, 210, 0.1) 0%, transparent 50%);
+}
+
+.why-image img {
+  @apply w-full h-auto object-cover;
+}
+
+.why-content {
+  @apply space-y-6;
+}
+
+/* ============================================
+   PROCES PRACY - Nowoczesny
+   ============================================ */
+
+.process-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative;
+}
+
+.process-card {
+  @apply text-center p-8 rounded-3xl transition-all duration-300 relative;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.process-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+}
+
+.process-card-number {
+  @apply w-20 h-20 rounded-2xl text-white
+         flex items-center justify-center text-2xl font-bold mx-auto mb-6
+         transition-all duration-300;
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
+  box-shadow: 0 10px 30px rgba(51, 176, 210, 0.3);
+}
+
+.process-card:hover .process-card-number {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.process-card-title {
+  @apply font-heading text-xl md:text-2xl font-semibold mb-4 text-white;
+}
+
+.process-card-description {
+  @apply text-base text-primary-200 leading-relaxed;
+}
+
+/* ============================================
+   SEKCJA CTA - Nowoczesna z zaokrągleniami
+   ============================================ */
+
+.cta-section {
+  @apply text-white py-24 relative overflow-hidden;
+  background: linear-gradient(135deg, var(--color-primary-800) 0%, var(--color-primary-900) 100%);
+}
+
+.cta-section::before {
+  content: "";
+  @apply absolute inset-0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.cta-content {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10;
+}
+
+.cta-card {
+  @apply max-w-4xl mx-auto p-12 md:p-16 rounded-3xl relative;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cta-title {
+  @apply font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white mb-6;
+}
+
+.cta-description {
+  @apply text-primary-100 text-lg md:text-xl max-w-2xl mx-auto mb-10;
+}
+
+/* ============================================
+   STOPKA - Nowoczesna z zaokrągleniami
+   ============================================ */
+
+.footer {
+  @apply bg-dark text-white pt-20 pb-8 relative;
+}
+
+.footer::before {
+  content: "";
+  @apply absolute top-0 left-0 right-0 h-px;
+  background: linear-gradient(90deg, transparent, rgba(51, 176, 210, 0.3), transparent);
+}
+
+.footer-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16;
+}
+
+.footer-logo {
+  @apply font-heading font-bold text-2xl mb-6 inline-block;
+  background: linear-gradient(135deg, var(--color-primary-400), var(--color-accent-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-description {
+  @apply text-gray-light text-sm leading-relaxed;
+}
+
+.footer-title {
+  @apply font-heading font-semibold text-lg mb-6 text-white;
+}
+
+.footer-links {
+  @apply space-y-3;
+}
+
+.footer-link {
+  @apply block text-gray-light text-sm transition-all duration-300
+         hover:text-white hover:translate-x-2;
+}
+
+.footer-contact-item {
+  @apply flex items-start gap-4 text-gray-light text-sm mb-5;
+}
+
+.footer-contact-icon {
+  @apply w-10 h-10 rounded-xl bg-dark-light flex items-center justify-center shrink-0;
+  color: var(--color-primary-400);
+}
+
+.footer-bottom {
+  @apply border-t border-dark-light pt-8 flex flex-col md:flex-row
+         justify-between items-center gap-4;
+}
+
+.footer-copyright {
+  @apply text-gray-light text-sm;
+}
+
+.footer-social {
+  @apply flex gap-3;
+}
+
+.footer-social-link {
+  @apply w-11 h-11 rounded-xl bg-dark-light flex items-center justify-center
+         text-gray-light transition-all duration-300;
+}
+
+.footer-social-link:hover {
+  @apply bg-primary-600 text-white -translate-y-1;
+  box-shadow: 0 10px 20px rgba(51, 176, 210, 0.3);
+}
+
+/* ============================================
+   FORMULARZE - Nowoczesne
+   ============================================ */
+
+.form-group {
+  @apply mb-6;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-dark mb-2;
+}
+
+.form-input {
+  @apply w-full px-5 py-4 rounded-xl border-2 border-light bg-white
+         text-dark placeholder:text-gray-light
+         focus:outline-none focus:border-primary-500
+         transition-all duration-300;
+}
+
+.form-input:focus {
+  box-shadow: 0 0 0 4px rgba(51, 176, 210, 0.1);
+}
+
+.form-textarea {
+  @apply w-full px-5 py-4 rounded-xl border-2 border-light bg-white
+         text-dark placeholder:text-gray-light
+         focus:outline-none focus:border-primary-500
+         transition-all duration-300 min-h-[150px] resize-y;
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+.divider {
+  @apply w-20 h-1.5 rounded-full;
+  background: linear-gradient(90deg, var(--color-primary-600), var(--color-accent-500));
+}
+
+.divider-center {
+  @apply w-20 h-1.5 rounded-full mx-auto;
+  background: linear-gradient(90deg, var(--color-primary-600), var(--color-accent-500));
+}
+
+.badge {
+  @apply inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold;
+}
+
+.badge-primary {
+  @apply inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold;
+  background: linear-gradient(135deg, var(--color-primary-50), var(--color-primary-100));
+  color: var(--color-primary-700);
+}
+
+.badge-accent {
+  @apply inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold;
+  background: linear-gradient(135deg, var(--color-accent-50), var(--color-accent-100));
+  color: var(--color-accent-700);
+}
+
+/* Glass Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Scroll margin for anchors */
+[id] {
+  scroll-margin-top: 100px;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-primary-200);
+  color: var(--color-primary-900);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-300);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-500);
+}

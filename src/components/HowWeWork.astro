@@ -1,0 +1,71 @@
+---
+interface Step {
+  number: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  steps?: Step[];
+}
+
+const {
+  title = "Jak Pracujemy",
+  subtitle = "Prosty proces współpracy w 4 krokach",
+  steps = [
+    {
+      number: "01",
+      title: "Konsultacja",
+      description: "Poznajemy Twoje potrzeby i sytuację biznesową podczas bezpłatnej konsultacji wstępnej."
+    },
+    {
+      number: "02",
+      title: "Analiza",
+      description: "Analizujemy dokumentację i proponujemy optymalne rozwiązania dostosowane do Twojej firmy."
+    },
+    {
+      number: "03",
+      title: "Realizacja",
+      description: "Przejmujemy obsługę księgową i zapewniamy terminowe rozliczenia z urzędami."
+    },
+    {
+      number: "04",
+      title: "Wsparcie",
+      description: "Oferujemy stałe wsparcie, doradztwo i regularne raporty o kondycji finansowej firmy."
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="section-dark" id="jak-pracujemy">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="text-xs font-semibold uppercase tracking-wider text-accent-400 mb-4 block">
+        Nasz proces
+      </span>
+      <h2 class="heading-2 text-white mb-4">{title}</h2>
+      <p class="text-primary-200 text-lg max-w-2xl mx-auto">{subtitle}</p>
+    </div>
+
+    <!-- Process Steps -->
+    <div class="process-grid">
+      {steps.map((step, index) => (
+        <div class="process-card relative">
+          {/* Connecting line */}
+          {index < steps.length - 1 && (
+            <div class="hidden lg:block absolute top-8 left-1/2 w-full h-0.5 bg-primary-700"></div>
+          )}
+
+          <div class="process-card-number relative z-10">
+            {step.number}
+          </div>
+          <h3 class="process-card-title text-white">{step.title}</h3>
+          <p class="text-primary-200">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

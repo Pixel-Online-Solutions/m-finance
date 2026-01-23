@@ -1,0 +1,49 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  showBreadcrumb?: boolean;
+  breadcrumbItems?: { label: string; href?: string }[];
+}
+
+const {
+  title,
+  subtitle,
+  showBreadcrumb = false,
+  breadcrumbItems = []
+} = Astro.props;
+---
+
+<section class="hero">
+  <!-- Decorative background pattern -->
+  <div class="hero-overlay"></div>
+
+  <!-- Decorative shapes -->
+  <div class="absolute top-20 left-10 w-64 h-64 bg-primary-400/10 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-10 right-10 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl"></div>
+
+  <div class="hero-content">
+    {showBreadcrumb && breadcrumbItems.length > 0 && (
+      <nav class="hero-breadcrumb mb-6">
+        {breadcrumbItems.map((item, index) => (
+          <>
+            {index > 0 && <span>/</span>}
+            {item.href ? (
+              <a href={item.href}>{item.label}</a>
+            ) : (
+              <span class="text-white">{item.label}</span>
+            )}
+          </>
+        ))}
+      </nav>
+    )}
+
+    <h1 class="hero-title">{title}</h1>
+
+    {subtitle && (
+      <p class="hero-subtitle">{subtitle}</p>
+    )}
+
+    <slot />
+  </div>
+</section>

@@ -1,0 +1,184 @@
+---
+interface Slide {
+  image: string;
+  title: string;
+  subtitle: string;
+}
+
+interface Props {
+  slides?: Slide[];
+}
+
+const {
+  slides = [
+    {
+      image: "/slider/slide1.jpg",
+      title: "Profesjonalne Biuro Rachunkowe",
+      subtitle: "Kompleksowa obsługa księgowa dla firm i klientów indywidualnych"
+    },
+    {
+      image: "/slider/slide2.jpg",
+      title: "Twój Partner w Finansach",
+      subtitle: "Zaufaj ekspertom z wieloletnim doświadczeniem w branży"
+    },
+    {
+      image: "/slider/slide3.jpg",
+      title: "Księgowość Bez Stresu",
+      subtitle: "Zajmiemy się Twoimi finansami, Ty skup się na biznesie"
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="hero-slider" id="hero">
+  <div class="slider-container">
+    {slides.map((slide, index) => (
+      <div
+        class:list={["slide", { active: index === 0 }]}
+        data-index={index}
+        style={`background-image: url('${slide.image}')`}
+      >
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <div class="slide-badge">
+            <span>M-Finance Biuro Rachunkowe</span>
+          </div>
+          <h1 class="slide-title">{slide.title}</h1>
+          <p class="slide-subtitle">{slide.subtitle}</p>
+          <div class="slide-buttons">
+            <a href="/kontakt" class="btn-accent btn-lg">
+              Bezpłatna Konsultacja
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+            <a href="#uslugi" class="btn-glass btn-lg">
+              Poznaj Nasze Usługi
+            </a>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Slider Navigation Dots -->
+  <div class="slider-dots">
+    {slides.map((_, index) => (
+      <button
+        class:list={["slider-dot", { active: index === 0 }]}
+        data-slide={index}
+        aria-label={`Przejdź do slajdu ${index + 1}`}
+      />
+    ))}
+  </div>
+
+  <!-- Slider Arrows -->
+  <button class="slider-arrow slider-arrow-prev" aria-label="Poprzedni slajd">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+    </svg>
+  </button>
+  <button class="slider-arrow slider-arrow-next" aria-label="Następny slajd">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+    </svg>
+  </button>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-mouse">
+      <div class="scroll-wheel"></div>
+    </div>
+    <span>Przewiń w dół</span>
+  </div>
+</section>
+
+<script>
+  class Slider {
+    private container: HTMLElement;
+    private slides: NodeListOf<HTMLElement>;
+    private dots: NodeListOf<HTMLElement>;
+    private currentIndex: number = 0;
+    private autoPlayInterval: number | null = null;
+    private autoPlayDelay: number = 6000;
+
+    constructor() {
+      this.container = document.querySelector('.slider-container')!;
+      this.slides = document.querySelectorAll('.slide');
+      this.dots = document.querySelectorAll('.slider-dot');
+
+      this.init();
+    }
+
+    private init() {
+      // Dots navigation
+      this.dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => this.goToSlide(index));
+      });
+
+      // Arrow navigation
+      document.querySelector('.slider-arrow-prev')?.addEventListener('click', () => this.prevSlide());
+      document.querySelector('.slider-arrow-next')?.addEventListener('click', () => this.nextSlide());
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') this.prevSlide();
+        if (e.key === 'ArrowRight') this.nextSlide();
+      });
+
+      // Touch support
+      let touchStartX = 0;
+      this.container.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+      });
+      this.container.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].clientX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) {
+          diff > 0 ? this.nextSlide() : this.prevSlide();
+        }
+      });
+
+      // Auto play
+      this.startAutoPlay();
+
+      // Pause on hover
+      this.container.addEventListener('mouseenter', () => this.stopAutoPlay());
+      this.container.addEventListener('mouseleave', () => this.startAutoPlay());
+    }
+
+    private goToSlide(index: number) {
+      this.slides[this.currentIndex].classList.remove('active');
+      this.dots[this.currentIndex].classList.remove('active');
+
+      this.currentIndex = index;
+
+      this.slides[this.currentIndex].classList.add('active');
+      this.dots[this.currentIndex].classList.add('active');
+    }
+
+    private nextSlide() {
+      const next = (this.currentIndex + 1) % this.slides.length;
+      this.goToSlide(next);
+    }
+
+    private prevSlide() {
+      const prev = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+      this.goToSlide(prev);
+    }
+
+    private startAutoPlay() {
+      this.autoPlayInterval = window.setInterval(() => this.nextSlide(), this.autoPlayDelay);
+    }
+
+    private stopAutoPlay() {
+      if (this.autoPlayInterval) {
+        clearInterval(this.autoPlayInterval);
+        this.autoPlayInterval = null;
+      }
+    }
+  }
+
+  // Initialize slider when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => new Slider());
+</script>
