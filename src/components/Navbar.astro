@@ -4,21 +4,27 @@ interface Props {
 }
 
 const { currentPath = "/" } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+// Normalize currentPath to work with base URL
+// currentPath comes as "/kontakt", we need to match it with "/m-finance/kontakt"
+const normalizedCurrentPath = currentPath.startsWith('/') ? currentPath.slice(1) : currentPath;
+const fullCurrentPath = base + normalizedCurrentPath;
 
 const navLinks = [
-  { href: "/", label: "Strona Główna" },
-  { href: "/o-nas", label: "O Nas" },
-  { href: "/klient-indywidualny", label: "Klient Indywidualny" },
-  { href: "/ksiegowosc-dla-firm", label: "Księgowość dla Firm" },
-  { href: "/kontakt", label: "Kontakt" },
+  { href: `${base}`, label: "Strona Główna" },
+  { href: `${base}o-nas`, label: "O Nas" },
+  { href: `${base}klient-indywidualny`, label: "Klient Indywidualny" },
+  { href: `${base}ksiegowosc-dla-firm`, label: "Księgowość dla Firm" },
+  { href: `${base}kontakt`, label: "Kontakt" },
 ];
 ---
 
 <header class="navbar" id="navbar">
   <div class="navbar-container">
     <!-- Left: Logo -->
-    <a href="/" class="flex items-center flex-shrink-0">
-      <img src="/logo.jpg" alt="M-Finance" class="h-9 w-auto" />
+    <a href={base} class="flex items-center flex-shrink-0">
+      <img src={`${base}logo.jpg`} alt="M-Finance" class="h-9 w-auto" />
     </a>
 
     <!-- Center: Desktop Navigation -->
@@ -26,7 +32,7 @@ const navLinks = [
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class:list={["navbar-link", { active: currentPath === link.href }]}
+          class:list={["navbar-link", { active: fullCurrentPath === link.href }]}
         >
           {link.label}
         </a>
@@ -73,16 +79,11 @@ const navLinks = [
     {navLinks.map((link) => (
       <a
         href={link.href}
-        class:list={["mobile-menu-link", { "text-primary-600": currentPath === link.href }]}
+        class:list={["mobile-menu-link", { "text-primary-600": fullCurrentPath === link.href }]}
       >
         {link.label}
       </a>
     ))}
-    <div class="mt-6">
-      <a href="/kontakt" class="btn-primary w-full text-center">
-        Kontakt
-      </a>
-    </div>
   </div>
 </header>
 

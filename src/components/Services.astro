@@ -12,6 +12,8 @@ interface Props {
   services?: Service[];
 }
 
+const base = import.meta.env.BASE_URL;
+
 const {
   title = "Nasze Usługi",
   subtitle = "Kompleksowa obsługa księgowa dostosowana do Twoich potrzeb",
@@ -20,37 +22,37 @@ const {
       icon: "calculator",
       title: "Pełna Księgowość",
       description: "Prowadzenie ksiąg rachunkowych zgodnie z obowiązującymi przepisami. Sporządzanie sprawozdań finansowych i deklaracji podatkowych.",
-      href: "/ksiegowosc-dla-firm"
+      href: `${base}ksiegowosc-dla-firm`
     },
     {
       icon: "document",
       title: "Rozliczenia Podatkowe",
       description: "Kompleksowe rozliczenia PIT, CIT, VAT. Optymalizacja podatkowa i doradztwo w zakresie przepisów podatkowych.",
-      href: "/klient-indywidualny"
+      href: `${base}klient-indywidualny`
     },
     {
       icon: "briefcase",
       title: "Zakładanie Działalności",
       description: "Pomoc przy rejestracji firmy, wybór formy opodatkowania, przygotowanie dokumentów założycielskich.",
-      href: "/klient-indywidualny"
+      href: `${base}klient-indywidualny`
     },
     {
       icon: "shield",
       title: "ZUS i Kadry",
       description: "Obsługa kadrowo-płacowa, rozliczenia z ZUS, prowadzenie akt osobowych i dokumentacji pracowniczej.",
-      href: "/ksiegowosc-dla-firm"
+      href: `${base}ksiegowosc-dla-firm`
     },
     {
       icon: "chart",
       title: "Analizy Finansowe",
       description: "Przygotowanie raportów i analiz finansowych wspierających podejmowanie strategicznych decyzji biznesowych.",
-      href: "/ksiegowosc-dla-firm"
+      href: `${base}ksiegowosc-dla-firm`
     },
     {
       icon: "lock",
       title: "Poufność i Bezpieczeństwo",
       description: "Gwarantujemy pełną poufność danych. Stosujemy najwyższe standardy bezpieczeństwa informacji.",
-      href: "/o-nas"
+      href: `${base}o-nas`
     }
   ]
 } = Astro.props;

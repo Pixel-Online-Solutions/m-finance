@@ -1,54 +1,97 @@
 name: Deploy Astro site to Pages
 
 on:
+  # Uruchamia się przy pushu do brancha master
   push:
     branches: ["master"]
+  # Pozwala uruchomić workflow ręcznie z zakładki Actions
   workflow_dispatch:
 
+# Uprawnienia potrzebne do deploymentu na GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Pozwala tylko na jedno wdrożenie naraz, pomijając kolejkowane buildy
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  BUILD_PATH: "." # domyślna ścieżka do projektu
+
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+
+      - name: Detect package manager
+        id: detect-package-manager
+        run: |
+          if [ -f "${{ github.workspace }}/pnpm-lock.yaml" ]; then
+            echo "manager=pnpm" >> $GITHUB_OUTPUT
+            echo "command=install" >> $GITHUB_OUTPUT
+            echo "runner=pnpm" >> $GITHUB_OUTPUT
+            exit 0
+          elif [ -f "${{ github.workspace }}/yarn.lock" ]; then
+            echo "manager=yarn" >> $GITHUB_OUTPUT
+            echo "command=install" >> $GITHUB_OUTPUT
+            echo "runner=yarn" >> $GITHUB_OUTPUT
+            exit 0
+          elif [ -f "${{ github.workspace }}/package-lock.json" ]; then
+            echo "manager=npm" >> $GITHUB_OUTPUT
+            echo "command=ci" >> $GITHUB_OUTPUT
+            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+            exit 0
+          else
+            echo "Unable to determine package manager"
+            exit 1
+          fi
+
       - name: Setup PNPM
-        uses: pnpm/action-setup@v2
+        if: ${{ steps.detect-package-manager.outputs.manager == 'pnpm' }}
+        uses: pnpm/action-setup@v4
         with:
-          version: 8
-      
-      - name: Setup Node.js
+          version: 9
+
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'pnpm'
-      
+          node-version: "20"
+          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache-dependency-path: ${{ env.BUILD_PATH }}/pnpm-lock.yaml
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
       - name: Install dependencies
-        run: pnpm install
-      
+        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        working-directory: ${{ env.BUILD_PATH }}
+
       - name: Build with Astro
-        run: pnpm build
-      
+        run: |
+          ${{ steps.detect-package-manager.outputs.runner }} astro build \
+            --site "${{ steps.pages.outputs.origin }}" \
+            --base "${{ steps.pages.outputs.base_path }}"
+        working-directory: ${{ env.BUILD_PATH }}
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: ${{ env.BUILD_PATH }}/dist
 
   deploy:
+    name: Deploy
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     needs: build
+    runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

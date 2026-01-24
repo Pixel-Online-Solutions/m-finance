@@ -8,11 +8,13 @@ interface Props {
   secondaryButtonHref?: string;
 }
 
+const base = import.meta.env.BASE_URL;
+
 const {
   title = "Gotowy na profesjonalną obsługę księgową?",
   description = "Skontaktuj się z nami już dziś i przekonaj się, jak możemy pomóc w rozwoju Twojego biznesu. Pierwsza konsultacja jest bezpłatna!",
   primaryButtonText = "Umów Bezpłatną Konsultację",
-  primaryButtonHref = "/kontakt",
+  primaryButtonHref = `${base}kontakt`,
   secondaryButtonText = "Zadzwoń: 734 497 487",
   secondaryButtonHref = "tel:+48734497487"
 } = Astro.props;

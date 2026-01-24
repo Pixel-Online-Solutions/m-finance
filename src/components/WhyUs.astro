@@ -10,6 +10,8 @@ interface Props {
   ctaHref?: string;
 }
 
+const base = import.meta.env.BASE_URL;
+
 const {
   title = "Dlaczego M-Finance?",
   subtitle = "Twój partner w finansach",
@@ -23,7 +25,7 @@ const {
   imageSrc = "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&auto=format&fit=crop&q=80",
   imageAlt = "Profesjonalne biuro rachunkowe M-Finance",
   ctaText = "Poznaj nas bliżej",
-  ctaHref = "/o-nas"
+  ctaHref = `${base}o-nas`
 } = Astro.props;
 ---
 

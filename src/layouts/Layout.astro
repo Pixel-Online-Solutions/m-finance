@@ -14,6 +14,8 @@ const {
   description = "M-Finance Biuro Rachunkowe - Profesjonalna obsługa księgowa dla firm i klientów indywidualnych. Pełna księgowość, rozliczenia podatkowe, ZUS, kadry.",
   currentPath = "/"
 } = Astro.props;
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <!DOCTYPE html>
@@ -31,7 +33,7 @@ const {
   <meta property="og:locale" content="pl_PL" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/m-favicon.png" />
+  <link rel="icon" type="image/svg+xml" href={`${base}m-favicon.png`} />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
