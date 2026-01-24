@@ -277,7 +277,7 @@ body {
   @apply fixed top-0 left-0 right-0 z-50;
   display: flex;
   justify-content: center;
-  padding: 1.25rem 0;
+  padding: 0;
 }
 
 .navbar-container {
@@ -364,7 +364,7 @@ body {
   height: 90vh;
   min-height: 600px;
   max-height: 850px;
-  margin: 0 auto 2rem;
+  margin: 0 auto;
   max-width: calc(100% - 4rem);
   border-radius: 3rem;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
@@ -373,7 +373,7 @@ body {
 @media (max-width: 768px) {
   .hero-slider {
     max-width: calc(100% - 2rem);
-    margin: 0 auto 1rem;
+    margin: 0 auto;
     border-radius: 2rem;
     height: 75vh;
   }
