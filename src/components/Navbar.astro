@@ -33,6 +33,23 @@ const navLinks = [
       ))}
     </nav>
 
+    <!-- Theme Toggle Button -->
+    <button
+      class="p-2 text-dark hover:text-primary-600 transition-colors flex-shrink-0"
+      id="theme-toggle-btn"
+      aria-label="Toggle theme"
+      title="Przełącz motyw"
+    >
+      <!-- Sun icon (show in dark mode) -->
+      <svg class="w-6 h-6" id="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+      </svg>
+      <!-- Moon icon (show in light mode) -->
+      <svg class="w-6 h-6 hidden" id="moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+      </svg>
+    </button>
+
     <!-- Mobile Menu Button -->
     <button
       class="lg:hidden p-2 text-dark hover:text-primary-600 transition-colors flex-shrink-0"
@@ -70,6 +87,7 @@ const navLinks = [
 <div class="h-0"></div>
 
 <script>
+  // Mobile menu toggle
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   const menuIcon = document.getElementById('menu-icon');
@@ -90,6 +108,52 @@ const navLinks = [
         menuIcon.classList.add('hidden');
         closeIcon.classList.remove('hidden');
       }
+    });
+  }
+
+  // Theme toggle functionality
+  const themeToggleBtn = document.getElementById('theme-toggle-btn');
+  const sunIcon = document.getElementById('sun-icon');
+  const moonIcon = document.getElementById('moon-icon');
+
+  // Get saved theme from localStorage or default to 'dark'
+  function getTheme(): string {
+    if (typeof localStorage !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      return savedTheme || 'dark';
+    }
+    return 'dark';
+  }
+
+  // Set theme and update UI
+  function setTheme(theme: string): void {
+    document.documentElement.setAttribute('data-theme', theme);
+
+    if (sunIcon && moonIcon) {
+      if (theme === 'light') {
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      } else {
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      }
+    }
+
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('theme', theme);
+    }
+  }
+
+  // Initialize theme on page load
+  const currentTheme = getTheme();
+  setTheme(currentTheme);
+
+  // Toggle theme on button click
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      setTheme(newTheme);
     });
   }
 </script>

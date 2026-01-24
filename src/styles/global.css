@@ -120,6 +120,12 @@ body {
 
 .section-dark {
   @apply bg-dark text-white py-20 md:py-28;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light theme version of dark sections */
+[data-theme="light"] .section-dark {
+  @apply bg-light text-dark;
 }
 
 .section-light {
@@ -589,6 +595,16 @@ body {
   transform: translateY(-5px);
 }
 
+[data-theme="light"] .process-card {
+  background: rgba(15, 23, 42, 0.03);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+[data-theme="light"] .process-card:hover {
+  background: rgba(15, 23, 42, 0.06);
+  box-shadow: 0 10px 30px rgba(51, 176, 210, 0.15);
+}
+
 .process-card-number {
   @apply w-20 h-20 rounded-2xl text-white
          flex items-center justify-center text-2xl font-bold mx-auto mb-6
@@ -605,8 +621,16 @@ body {
   @apply font-heading text-xl md:text-2xl font-semibold mb-4 text-white;
 }
 
+[data-theme="light"] .process-card-title {
+  @apply text-dark;
+}
+
 .process-card-description {
   @apply text-base text-primary-200 leading-relaxed;
+}
+
+[data-theme="light"] .process-card-description {
+  @apply text-gray;
 }
 
 /* ============================================
@@ -616,12 +640,24 @@ body {
 .cta-section {
   @apply text-white py-24 relative overflow-hidden;
   background: linear-gradient(135deg, var(--color-primary-800) 0%, var(--color-primary-900) 100%);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .cta-section::before {
   content: "";
   @apply absolute inset-0;
   background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  transition: opacity 0.3s ease;
+}
+
+/* Light theme version of CTA section */
+[data-theme="light"] .cta-section {
+  @apply text-dark;
+  background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-primary-100) 100%);
+}
+
+[data-theme="light"] .cta-section::before {
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230f172a' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 .cta-content {
@@ -635,12 +671,25 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+[data-theme="light"] .cta-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+}
+
 .cta-title {
   @apply font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white mb-6;
 }
 
+[data-theme="light"] .cta-title {
+  @apply text-dark;
+}
+
 .cta-description {
   @apply text-primary-100 text-lg md:text-xl max-w-2xl mx-auto mb-10;
+}
+
+[data-theme="light"] .cta-description {
+  @apply text-gray;
 }
 
 /* ============================================
@@ -657,16 +706,29 @@ body {
   opacity: 0.1;
 }
 
+[data-theme="light"] .floating-shape-accent {
+  opacity: 0.15;
+}
+
 .floating-shape-primary {
   @apply absolute w-96 h-96 rounded-full blur-3xl;
   background: var(--color-primary-400);
   opacity: 0.1;
 }
 
+[data-theme="light"] .floating-shape-primary {
+  opacity: 0.2;
+}
+
 .floating-shape-white {
   @apply absolute rounded-full blur-3xl;
   background: white;
   opacity: 0.05;
+}
+
+[data-theme="light"] .floating-shape-white {
+  background: var(--color-dark);
+  opacity: 0.03;
 }
 
 /* ============================================
@@ -678,6 +740,11 @@ body {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] .glass-badge {
+  background: rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(15, 23, 42, 0.1);
 }
 
 /* ============================================
@@ -701,6 +768,24 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
+[data-theme="light"] .premium-glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+[data-theme="light"] .premium-glass-card:hover {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 20px 40px rgba(51, 176, 210, 0.15);
+}
+
+[data-theme="light"] .premium-glass-card .text-white {
+  @apply text-dark;
+}
+
+[data-theme="light"] .premium-glass-card .text-primary-200 {
+  @apply text-gray;
+}
+
 /* ============================================
    IMAGE OVERLAY - Dla WhyUs z ciemnym overlayem
    ============================================ */
@@ -713,8 +798,96 @@ body {
     rgba(51, 176, 210, 0.3) 100%);
 }
 
+[data-theme="light"] .dark-image-overlay::before {
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(51, 176, 210, 0.4) 100%);
+}
+
 .dark-image-overlay img {
   @apply w-full h-auto object-cover;
+}
+
+/* ============================================
+   THEME-AWARE TEXT COLORS
+   ============================================ */
+
+/* White text in dark sections becomes dark in light theme */
+[data-theme="light"] .section-dark .text-white,
+[data-theme="light"] .cta-section .text-white {
+  @apply text-dark;
+}
+
+/* Primary-200 text (light blue) becomes gray in light theme */
+[data-theme="light"] .section-dark .text-primary-200,
+[data-theme="light"] .cta-section .text-primary-200 {
+  @apply text-gray;
+}
+
+/* Primary-100 text becomes gray in light theme */
+[data-theme="light"] .section-dark .text-primary-100,
+[data-theme="light"] .cta-section .text-primary-100 {
+  @apply text-gray;
+}
+
+/* Footer-specific text color overrides */
+[data-theme="light"] .footer .text-white {
+  @apply text-dark;
+}
+
+[data-theme="light"] .footer .text-gray-light {
+  @apply text-gray;
+}
+
+/* Border color override in footer */
+[data-theme="light"] .footer .border-white\/10 {
+  border-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+/* Form inputs in dark sections for light theme */
+[data-theme="light"] .section-dark input,
+[data-theme="light"] .section-dark textarea {
+  background: rgba(15, 23, 42, 0.03) !important;
+  border: 1px solid rgba(15, 23, 42, 0.1) !important;
+  @apply text-dark;
+}
+
+[data-theme="light"] .section-dark input::placeholder,
+[data-theme="light"] .section-dark textarea::placeholder {
+  @apply text-gray-light;
+}
+
+[data-theme="light"] .section-dark label {
+  @apply text-dark;
+}
+
+[data-theme="light"] .section-dark .text-primary-300 {
+  @apply text-gray;
+}
+
+[data-theme="light"] .section-dark .placeholder-primary-400::placeholder {
+  @apply text-gray-light;
+}
+
+/* Accent text (yellow) - darker in light theme for better readability */
+[data-theme="light"] .text-accent-400 {
+  color: var(--color-accent-600) !important;
+}
+
+/* Icon backgrounds in premium cards and CTA sections - lighter in light theme */
+[data-theme="light"] .premium-glass-card [style*="background: linear-gradient"] {
+  background: linear-gradient(135deg, var(--color-primary-300), var(--color-primary-400)) !important;
+  box-shadow: 0 10px 30px rgba(51, 176, 210, 0.2) !important;
+}
+
+[data-theme="light"] .cta-section [style*="background: linear-gradient(135deg, var(--color-primary-500)"] {
+  background: linear-gradient(135deg, var(--color-primary-300), var(--color-primary-400)) !important;
+  box-shadow: 0 10px 30px rgba(51, 176, 210, 0.2) !important;
+}
+
+[data-theme="light"] .process-card [style*="background: linear-gradient"] {
+  background: linear-gradient(135deg, var(--color-primary-300), var(--color-primary-400)) !important;
+  box-shadow: 0 10px 30px rgba(51, 176, 210, 0.2) !important;
 }
 
 /* ============================================
@@ -723,12 +896,22 @@ body {
 
 .footer {
   @apply bg-dark text-white pt-20 pb-8 relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .footer::before {
   content: "";
   @apply absolute top-0 left-0 right-0 h-px;
   background: linear-gradient(90deg, transparent, rgba(51, 176, 210, 0.3), transparent);
+}
+
+/* Light theme version of footer */
+[data-theme="light"] .footer {
+  @apply bg-light text-dark;
+}
+
+[data-theme="light"] .footer::before {
+  background: linear-gradient(90deg, transparent, rgba(51, 176, 210, 0.5), transparent);
 }
 
 .footer-grid {
@@ -747,8 +930,16 @@ body {
   @apply text-gray-light text-sm leading-relaxed;
 }
 
+[data-theme="light"] .footer-description {
+  @apply text-gray;
+}
+
 .footer-title {
   @apply font-heading font-semibold text-lg mb-6 text-white;
+}
+
+[data-theme="light"] .footer-title {
+  @apply text-dark;
 }
 
 .footer-links {
@@ -760,8 +951,16 @@ body {
          hover:text-white hover:translate-x-2;
 }
 
+[data-theme="light"] .footer-link {
+  @apply text-gray hover:text-dark;
+}
+
 .footer-contact-item {
   @apply flex items-start gap-4 text-gray-light text-sm mb-5;
+}
+
+[data-theme="light"] .footer-contact-item {
+  @apply text-gray;
 }
 
 .footer-contact-icon {
@@ -769,13 +968,25 @@ body {
   color: var(--color-primary-400);
 }
 
+[data-theme="light"] .footer-contact-icon {
+  @apply bg-primary-100;
+}
+
 .footer-bottom {
   @apply border-t border-dark-light pt-8 flex flex-col md:flex-row
          justify-between items-center gap-4;
 }
 
+[data-theme="light"] .footer-bottom {
+  @apply border-primary-200;
+}
+
 .footer-copyright {
   @apply text-gray-light text-sm;
+}
+
+[data-theme="light"] .footer-copyright {
+  @apply text-gray;
 }
 
 .footer-social {
@@ -785,6 +996,10 @@ body {
 .footer-social-link {
   @apply w-11 h-11 rounded-xl bg-dark-light flex items-center justify-center
          text-gray-light transition-all duration-300;
+}
+
+[data-theme="light"] .footer-social-link {
+  @apply bg-primary-100 text-gray;
 }
 
 .footer-social-link:hover {
