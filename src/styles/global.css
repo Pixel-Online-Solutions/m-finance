@@ -486,6 +486,13 @@ body {
   @apply right-6;
 }
 
+/* Hide slider arrows on mobile */
+@media (max-width: 768px) {
+  .slider-arrow {
+    display: none;
+  }
+}
+
 /* Scroll Indicator */
 .scroll-indicator {
   @apply absolute bottom-8 right-8 flex flex-col items-center gap-2 text-white/70 text-xs z-20;
