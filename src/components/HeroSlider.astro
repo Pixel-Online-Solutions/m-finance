@@ -30,6 +30,7 @@ const {
 } = Astro.props;
 ---
 
+<div class="hero-wrapper">
 <section class="hero-slider" id="hero">
   <div class="slider-container">
     {slides.map((slide, index) => (
@@ -92,6 +93,15 @@ const {
     <span>Przewiń w dół</span>
   </div>
 </section>
+</div>
+
+<style>
+  .hero-wrapper {
+    background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: 0;
+    padding-top: 1.25rem;
+  }
+</style>
 
 <script>
   class Slider {

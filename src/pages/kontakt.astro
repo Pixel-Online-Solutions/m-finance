@@ -1,11 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Kontakt - M-Finance">
-  <Navbar />
+<Layout title="Kontakt - M-Finance" currentPath="/kontakt">
 
   <!-- Hero Section -->
   <section class="section-dark min-h-[50vh] flex items-center">
@@ -236,7 +233,7 @@ import Footer from '../components/Footer.astro';
               37-450 Stalowa Wola
             </p>
             <a
-              href="https://www.google.com/maps/search/?api=1&query=al.+Jana+Pawła+II+13+lok+207,+37-450+Stalowa+Wola"
+              href="https://maps.app.goo.gl/iZcZ1Fb6d861URas7"
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center gap-2 mt-4 text-accent-400 hover:text-accent-300 font-semibold transition-colors"
@@ -263,8 +260,6 @@ import Footer from '../components/Footer.astro';
       </div>
     </div>
   </section>
-
-  <Footer />
 </Layout>
 
 <style>
