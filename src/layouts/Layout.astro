@@ -41,9 +41,17 @@ const {
     rel="stylesheet"
   />
 
+  <!-- Theme initialization script (prevents flash of unstyled content) -->
+  <script is:inline>
+    (function() {
+      const theme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
   <title>{title}</title>
 </head>
-<body>
+<body class="antialiased">
   <Navbar currentPath={currentPath} />
 
   <main>
