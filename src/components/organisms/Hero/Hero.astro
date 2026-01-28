@@ -1,0 +1,52 @@
+---
+import "./Hero.css";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+}
+
+const base = import.meta.env.BASE_URL;
+
+const {
+  title = "Profesjonalne Biuro Rachunkowe",
+  subtitle = "M-Finance - Twój Partner w Finansach",
+  description = "Oferujemy kompleksową obsługę księgową dla firm i klientów indywidualnych. Dzięki wieloletniemu doświadczeniu i certyfikatom zapewniamy najwyższą jakość usług. Skontaktuj się z nami i przekonaj się, jak możemy wspierać rozwój Twojego biznesu."
+} = Astro.props;
+---
+
+<section class="hero-modern">
+  <div class="container">
+    <div class="hero-rounded-container">
+      <div class="hero-content">
+        <h1 class="hero-title">{title}</h1>
+        <p class="hero-subtitle">{subtitle}</p>
+        <p class="hero-description">{description}</p>
+
+        <div class="hero-buttons">
+          <a href={`${base}kontakt`} class="btn-white btn-lg group">
+            Bezpłatna Konsultacja
+            <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          <a href="tel:+48734497487" class="btn-hero-outline btn-lg group">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            Zadzwoń: 734 497 487
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero-scroll-indicator">
+    <div class="hero-scroll-mouse">
+      <div class="hero-scroll-wheel"></div>
+    </div>
+    <span>Przewiń w dół</span>
+  </div>
+</section>

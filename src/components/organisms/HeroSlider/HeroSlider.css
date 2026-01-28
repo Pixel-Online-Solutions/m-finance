@@ -1,0 +1,149 @@
+@import "../../../styles/theme.css" reference;
+
+/* ============================================
+   HERO SLIDER - Profesjonalny slider
+   ============================================ */
+
+.hero-wrapper {
+  background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+  padding: 0;
+}
+
+.hero-slider {
+  @apply relative overflow-hidden;
+  height: 90vh;
+  min-height: 600px;
+  max-height: 850px;
+  margin: 0 auto;
+  max-width: calc(100% - 4rem);
+  border-radius: 3rem;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .hero-slider {
+    max-width: calc(100% - 2rem);
+    margin: 0 auto;
+    border-radius: 2rem;
+    height: 75vh;
+  }
+}
+
+.slider-container {
+  @apply relative w-full h-full;
+}
+
+.slide {
+  @apply absolute inset-0 w-full h-full opacity-0 transition-opacity duration-1000;
+  background-size: cover;
+  background-position: center;
+}
+
+.slide.active {
+  @apply opacity-100;
+}
+
+.slide-overlay {
+  @apply absolute inset-0;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 57, 69, 0.88) 0%,
+    rgba(33, 122, 147, 0.78) 50%,
+    rgba(51, 176, 210, 0.65) 100%
+  );
+}
+
+.slide-content {
+  @apply absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4;
+  z-index: 10;
+}
+
+.slide-badge {
+  @apply inline-flex items-center px-5 py-2 rounded-full text-sm font-medium mb-8;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: slide-down 0.8s ease-out;
+}
+
+.slide-title {
+  @apply font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6;
+  animation: slide-up 0.8s ease-out 0.2s both;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.slide-subtitle {
+  @apply text-lg md:text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto mb-10;
+  animation: slide-up 0.8s ease-out 0.4s both;
+}
+
+.slide-buttons {
+  @apply flex flex-col sm:flex-row items-center gap-4;
+  animation: slide-up 0.8s ease-out 0.6s both;
+}
+
+/* Slider Navigation */
+.slider-dots {
+  @apply absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 z-20;
+}
+
+.slider-dot {
+  @apply w-3 h-3 rounded-full transition-all duration-300 cursor-pointer;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+}
+
+.slider-dot:hover {
+  background: rgba(255, 255, 255, 0.7);
+  transform: scale(1.2);
+}
+
+.slider-dot.active {
+  @apply w-10;
+  background: var(--color-accent-500);
+  border-radius: 1rem;
+}
+
+/* Slider Arrows */
+.slider-arrow {
+  @apply absolute top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-2xl
+         flex items-center justify-center text-white cursor-pointer
+         transition-all duration-300;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.slider-arrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.slider-arrow-prev {
+  @apply left-6;
+}
+
+.slider-arrow-next {
+  @apply right-6;
+}
+
+/* Hide slider arrows on mobile */
+@media (max-width: 768px) {
+  .slider-arrow {
+    display: none;
+  }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  @apply absolute bottom-8 right-8 flex flex-col items-center gap-2 text-white/70 text-xs z-20;
+  animation: float 3s ease-in-out infinite;
+}
+
+.scroll-mouse {
+  @apply w-6 h-10 rounded-full border-2 border-white/30 flex justify-center pt-2;
+}
+
+.scroll-wheel {
+  @apply w-1 h-2 bg-white/70 rounded-full;
+  animation: scroll-bounce 2s ease-in-out infinite;
+}

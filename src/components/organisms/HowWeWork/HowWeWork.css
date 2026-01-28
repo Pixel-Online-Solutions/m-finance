@@ -1,0 +1,57 @@
+@import "../../../styles/theme.css" reference;
+
+/* ============================================
+   HOW WE WORK - Proces pracy
+   ============================================ */
+
+.process-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative;
+}
+
+.process-card {
+  @apply text-center p-8 rounded-3xl transition-all duration-300 relative;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.process-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+}
+
+[data-theme="light"] .process-card {
+  background: rgba(15, 23, 42, 0.03);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+[data-theme="light"] .process-card:hover {
+  background: rgba(15, 23, 42, 0.06);
+  box-shadow: 0 10px 30px rgba(51, 176, 210, 0.15);
+}
+
+.process-card-number {
+  @apply w-20 h-20 rounded-2xl text-white
+         flex items-center justify-center text-2xl font-bold mx-auto mb-6
+         transition-all duration-300;
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
+  box-shadow: 0 10px 30px rgba(51, 176, 210, 0.3);
+}
+
+.process-card:hover .process-card-number {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.process-card-title {
+  @apply font-heading text-xl md:text-2xl font-semibold mb-4 text-white;
+}
+
+[data-theme="light"] .process-card-title {
+  @apply text-dark;
+}
+
+.process-card-description {
+  @apply text-base text-primary-200 leading-relaxed;
+}
+
+[data-theme="light"] .process-card-description {
+  @apply text-gray;
+}

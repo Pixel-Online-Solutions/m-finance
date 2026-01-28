@@ -1,0 +1,490 @@
+@import "./theme.css";
+
+/* ============================================
+   M-FINANCE - MAIN STYLES
+   Globalne style bazowe i utility
+   ============================================ */
+
+/* ============================================
+   STYLE BAZOWE
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-sans text-dark bg-white antialiased;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   KONTENERY I LAYOUT
+   ============================================ */
+
+.container {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.container-narrow {
+  @apply w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.section {
+  @apply py-20 md:py-28;
+}
+
+.section-dark {
+  @apply bg-dark text-white py-20 md:py-28;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light theme version of dark sections */
+[data-theme="light"] .section-dark {
+  @apply bg-light text-dark;
+}
+
+.section-light {
+  @apply bg-light py-20 md:py-28;
+}
+
+/* ============================================
+   TYPOGRAFIA
+   ============================================ */
+
+.heading-1 {
+  @apply font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight;
+}
+
+.heading-2 {
+  @apply font-heading text-3xl md:text-4xl font-bold leading-tight;
+}
+
+.heading-3 {
+  @apply font-heading text-2xl md:text-3xl font-semibold leading-snug;
+}
+
+.heading-4 {
+  @apply font-heading text-xl md:text-2xl font-semibold;
+}
+
+.text-body {
+  @apply text-base md:text-lg text-gray leading-relaxed;
+}
+
+.text-small {
+  @apply text-sm text-gray-light;
+}
+
+.text-label {
+  @apply text-xs font-semibold uppercase tracking-wider text-primary-500;
+}
+
+/* ============================================
+   PRZYCISKI - Nowoczesny styl
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn:hover::before {
+  opacity: 1;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 px-7 py-3.5
+         font-semibold text-sm rounded-xl transition-all duration-300
+         cursor-pointer border-2 border-transparent
+         bg-primary-600 text-white
+         hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-600/30
+         active:scale-95;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 px-7 py-3.5
+         font-semibold text-sm rounded-xl transition-all duration-300
+         cursor-pointer border-2
+         bg-transparent border-primary-600 text-primary-600
+         hover:bg-primary-600 hover:text-white hover:-translate-y-0.5
+         active:scale-95;
+}
+
+.btn-accent {
+  @apply inline-flex items-center justify-center gap-2 px-7 py-3.5
+         font-semibold text-sm rounded-xl transition-all duration-300
+         cursor-pointer border-2 border-transparent
+         bg-accent-500 text-dark
+         hover:bg-accent-400 hover:shadow-xl hover:shadow-accent-500/30 hover:-translate-y-0.5
+         active:scale-95;
+}
+
+.btn-white {
+  @apply inline-flex items-center justify-center gap-2 px-7 py-3.5
+         font-semibold text-sm rounded-xl transition-all duration-300
+         cursor-pointer border-2 border-transparent
+         bg-white text-dark
+         hover:bg-light hover:shadow-xl hover:-translate-y-0.5
+         active:scale-95;
+}
+
+.btn-dark {
+  @apply inline-flex items-center justify-center gap-2 px-7 py-3.5
+         font-semibold text-sm rounded-xl transition-all duration-300
+         cursor-pointer border-2 border-transparent
+         bg-dark text-white
+         hover:bg-dark-light hover:shadow-xl hover:-translate-y-0.5
+         active:scale-95;
+}
+
+/* Glass Button */
+.btn-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.btn-lg {
+  @apply px-8 py-4 text-base;
+}
+
+.btn-sm {
+  @apply px-5 py-2.5 text-xs;
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+.divider {
+  @apply w-20 h-1.5 rounded-full;
+  background: linear-gradient(90deg, var(--color-primary-600), var(--color-accent-500));
+}
+
+.divider-center {
+  @apply w-20 h-1.5 rounded-full mx-auto;
+  background: linear-gradient(90deg, var(--color-primary-600), var(--color-accent-500));
+}
+
+.badge {
+  @apply inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold;
+}
+
+.badge-primary {
+  @apply inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold;
+  background: linear-gradient(135deg, var(--color-primary-50), var(--color-primary-100));
+  color: var(--color-primary-700);
+}
+
+.badge-accent {
+  @apply inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold;
+  background: linear-gradient(135deg, var(--color-accent-50), var(--color-accent-100));
+  color: var(--color-accent-700);
+}
+
+/* Glass Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   GLASS BADGE - Reużywalny dla obu wzorców
+   ============================================ */
+
+.glass-badge {
+  @apply inline-flex items-center px-4 py-2 rounded-full text-sm font-medium;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] .glass-badge {
+  background: rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+/* ============================================
+   FLOATING SHAPES - Reużywalne dla wzorca CTA
+   ============================================ */
+
+.floating-shapes {
+  @apply absolute inset-0 overflow-hidden pointer-events-none;
+}
+
+.floating-shape-accent {
+  @apply absolute w-72 h-72 rounded-full blur-3xl;
+  background: var(--color-accent-500);
+  opacity: 0.1;
+}
+
+[data-theme="light"] .floating-shape-accent {
+  opacity: 0.15;
+}
+
+.floating-shape-primary {
+  @apply absolute w-96 h-96 rounded-full blur-3xl;
+  background: var(--color-primary-400);
+  opacity: 0.1;
+}
+
+[data-theme="light"] .floating-shape-primary {
+  opacity: 0.2;
+}
+
+.floating-shape-white {
+  @apply absolute rounded-full blur-3xl;
+  background: white;
+  opacity: 0.05;
+}
+
+[data-theme="light"] .floating-shape-white {
+  background: var(--color-dark);
+  opacity: 0.03;
+}
+
+/* ============================================
+   PREMIUM GLASS CARD - Dla wzorca CTA
+   ============================================ */
+
+.premium-glass-container {
+  @apply max-w-6xl mx-auto relative z-10;
+}
+
+.premium-glass-card {
+  @apply p-8 rounded-2xl relative transition-all duration-300;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.premium-glass-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .premium-glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+[data-theme="light"] .premium-glass-card:hover {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 20px 40px rgba(51, 176, 210, 0.15);
+}
+
+[data-theme="light"] .premium-glass-card .text-white {
+  @apply text-dark;
+}
+
+[data-theme="light"] .premium-glass-card .text-primary-200 {
+  @apply text-gray;
+}
+
+/* ============================================
+   IMAGE OVERLAY - Dla WhyUs z ciemnym overlayem
+   ============================================ */
+
+.dark-image-overlay::before {
+  content: "";
+  @apply absolute inset-0 z-10;
+  background: linear-gradient(135deg,
+    rgba(15, 23, 42, 0.85) 0%,
+    rgba(51, 176, 210, 0.3) 100%);
+}
+
+[data-theme="light"] .dark-image-overlay::before {
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(51, 176, 210, 0.4) 100%);
+}
+
+.dark-image-overlay img {
+  @apply w-full h-auto object-cover;
+}
+
+/* ============================================
+   THEME-AWARE TEXT COLORS
+   ============================================ */
+
+/* White text in dark sections becomes dark in light theme */
+[data-theme="light"] .section-dark .text-white,
+[data-theme="light"] .cta-section .text-white {
+  @apply text-dark;
+}
+
+/* Primary-200 text (light blue) becomes gray in light theme */
+[data-theme="light"] .section-dark .text-primary-200,
+[data-theme="light"] .cta-section .text-primary-200 {
+  @apply text-gray;
+}
+
+/* Primary-100 text becomes gray in light theme */
+[data-theme="light"] .section-dark .text-primary-100,
+[data-theme="light"] .cta-section .text-primary-100 {
+  @apply text-gray;
+}
+
+/* Footer-specific text color overrides */
+[data-theme="light"] .footer .text-white {
+  @apply text-dark;
+}
+
+[data-theme="light"] .footer .text-gray-light {
+  @apply text-gray;
+}
+
+/* Border color override in footer */
+[data-theme="light"] .footer .border-white\/10 {
+  border-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+/* Form inputs in dark sections for light theme */
+[data-theme="light"] .section-dark input,
+[data-theme="light"] .section-dark textarea {
+  background: rgba(15, 23, 42, 0.03) !important;
+  border: 1px solid rgba(15, 23, 42, 0.1) !important;
+  @apply text-dark;
+}
+
+[data-theme="light"] .section-dark input::placeholder,
+[data-theme="light"] .section-dark textarea::placeholder {
+  @apply text-gray-light;
+}
+
+[data-theme="light"] .section-dark label {
+  @apply text-dark;
+}
+
+[data-theme="light"] .section-dark .text-primary-300 {
+  @apply text-gray;
+}
+
+[data-theme="light"] .section-dark .placeholder-primary-400::placeholder {
+  @apply text-gray-light;
+}
+
+/* Accent text (yellow) - darker in light theme for better readability */
+[data-theme="light"] .text-accent-400 {
+  color: var(--color-accent-600) !important;
+}
+
+/* Icon backgrounds in premium cards and CTA sections - lighter in light theme */
+[data-theme="light"] .premium-glass-card [style*="background: linear-gradient"] {
+  background: linear-gradient(135deg, var(--color-primary-300), var(--color-primary-400)) !important;
+  box-shadow: 0 10px 30px rgba(51, 176, 210, 0.2) !important;
+}
+
+[data-theme="light"] .cta-section [style*="background: linear-gradient(135deg, var(--color-primary-500)"] {
+  background: linear-gradient(135deg, var(--color-primary-300), var(--color-primary-400)) !important;
+  box-shadow: 0 10px 30px rgba(51, 176, 210, 0.2) !important;
+}
+
+[data-theme="light"] .process-card [style*="background: linear-gradient"] {
+  background: linear-gradient(135deg, var(--color-primary-300), var(--color-primary-400)) !important;
+  box-shadow: 0 10px 30px rgba(51, 176, 210, 0.2) !important;
+}
+
+/* ============================================
+   FORMULARZE - Nowoczesne
+   ============================================ */
+
+.form-group {
+  @apply mb-6;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-dark mb-2;
+}
+
+.form-input {
+  @apply w-full px-5 py-4 rounded-xl border-2 border-light bg-white
+         text-dark placeholder:text-gray-light
+         focus:outline-none focus:border-primary-500
+         transition-all duration-300;
+}
+
+.form-input:focus {
+  box-shadow: 0 0 0 4px rgba(51, 176, 210, 0.1);
+}
+
+.form-textarea {
+  @apply w-full px-5 py-4 rounded-xl border-2 border-light bg-white
+         text-dark placeholder:text-gray-light
+         focus:outline-none focus:border-primary-500
+         transition-all duration-300 min-h-[150px] resize-y;
+}
+
+/* Scroll margin for anchors */
+[id] {
+  scroll-margin-top: 100px;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-primary-200);
+  color: var(--color-primary-900);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-300);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-500);
+}

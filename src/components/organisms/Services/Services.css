@@ -1,0 +1,43 @@
+@import "../../../styles/theme.css" reference;
+
+/* ============================================
+   SERVICES - Karty usług
+   ============================================ */
+
+.services-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+}
+
+.service-card {
+  @apply bg-white rounded-3xl p-8 transition-all duration-500;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(51, 176, 210, 0.12);
+  border-color: rgba(51, 176, 210, 0.1);
+}
+
+.service-card-icon {
+  @apply w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-primary-600;
+  background: linear-gradient(135deg, var(--color-primary-50), var(--color-primary-100));
+}
+
+.service-card-title {
+  @apply font-heading text-xl md:text-2xl font-semibold text-dark mb-4;
+}
+
+.service-card-description {
+  @apply text-base text-gray leading-relaxed mb-6;
+}
+
+.service-card-link {
+  @apply inline-flex items-center gap-2 text-primary-600 font-semibold
+         text-sm transition-all duration-300;
+}
+
+.service-card-link:hover {
+  gap: 1rem;
+}

@@ -1,0 +1,39 @@
+@import "../../../styles/theme.css" reference;
+
+/* ============================================
+   WHY US - Sekcja "Dlaczego my"
+   ============================================ */
+
+.why-section {
+  @apply bg-light py-20 md:py-28 relative overflow-hidden;
+}
+
+.why-section::before {
+  content: "";
+  @apply absolute top-0 right-0 w-1/2 h-full;
+  background: linear-gradient(135deg, transparent 0%, rgba(51, 176, 210, 0.03) 100%);
+  border-radius: 0 0 0 100px;
+}
+
+.why-grid {
+  @apply grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10;
+}
+
+.why-image {
+  @apply rounded-3xl overflow-hidden relative;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+}
+
+.why-image::before {
+  content: "";
+  @apply absolute inset-0 z-10;
+  background: linear-gradient(135deg, rgba(51, 176, 210, 0.1) 0%, transparent 50%);
+}
+
+.why-image img {
+  @apply w-full h-auto object-cover;
+}
+
+.why-content {
+  @apply space-y-6;
+}

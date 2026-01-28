@@ -1,0 +1,60 @@
+@import "../../../styles/theme.css" reference;
+
+/* ============================================
+   CTA SECTION - Sekcja Call to Action
+   ============================================ */
+
+.cta-section {
+  @apply text-white py-24 relative overflow-hidden;
+  background: linear-gradient(135deg, var(--color-primary-800) 0%, var(--color-primary-900) 100%);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.cta-section::before {
+  content: "";
+  @apply absolute inset-0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  transition: opacity 0.3s ease;
+}
+
+/* Light theme version of CTA section */
+[data-theme="light"] .cta-section {
+  @apply text-dark;
+  background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-primary-100) 100%);
+}
+
+[data-theme="light"] .cta-section::before {
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230f172a' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.cta-content {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10;
+}
+
+.cta-card {
+  @apply max-w-4xl mx-auto p-12 md:p-16 rounded-3xl relative;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] .cta-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+.cta-title {
+  @apply font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white mb-6;
+}
+
+[data-theme="light"] .cta-title {
+  @apply text-dark;
+}
+
+.cta-description {
+  @apply text-primary-100 text-lg md:text-xl max-w-2xl mx-auto mb-10;
+}
+
+[data-theme="light"] .cta-description {
+  @apply text-gray;
+}

@@ -1,0 +1,118 @@
+@import "../../../styles/theme.css" reference;
+
+/* ============================================
+   FOOTER - Nowoczesna stopka z zaokrągleniami
+   ============================================ */
+
+.footer {
+  @apply bg-dark text-white pt-20 pb-8 relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footer::before {
+  content: "";
+  @apply absolute top-0 left-0 right-0 h-px;
+  background: linear-gradient(90deg, transparent, rgba(51, 176, 210, 0.3), transparent);
+}
+
+/* Light theme version of footer */
+[data-theme="light"] .footer {
+  @apply bg-light text-dark;
+}
+
+[data-theme="light"] .footer::before {
+  background: linear-gradient(90deg, transparent, rgba(51, 176, 210, 0.5), transparent);
+}
+
+.footer-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16;
+}
+
+.footer-logo {
+  @apply font-heading font-bold text-2xl mb-6 inline-block;
+  background: linear-gradient(135deg, var(--color-primary-400), var(--color-accent-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-description {
+  @apply text-gray-light text-sm leading-relaxed;
+}
+
+[data-theme="light"] .footer-description {
+  @apply text-gray;
+}
+
+.footer-title {
+  @apply font-heading font-semibold text-lg mb-6 text-white;
+}
+
+[data-theme="light"] .footer-title {
+  @apply text-dark;
+}
+
+.footer-links {
+  @apply space-y-3;
+}
+
+.footer-link {
+  @apply block text-gray-light text-sm transition-all duration-300
+         hover:text-white hover:translate-x-2;
+}
+
+[data-theme="light"] .footer-link {
+  @apply text-gray hover:text-dark;
+}
+
+.footer-contact-item {
+  @apply flex items-start gap-4 text-gray-light text-sm mb-5;
+}
+
+[data-theme="light"] .footer-contact-item {
+  @apply text-gray;
+}
+
+.footer-contact-icon {
+  @apply w-10 h-10 rounded-xl bg-dark-light flex items-center justify-center shrink-0;
+  color: var(--color-primary-400);
+}
+
+[data-theme="light"] .footer-contact-icon {
+  @apply bg-primary-100;
+}
+
+.footer-bottom {
+  @apply border-t border-dark-light pt-8 flex flex-col md:flex-row
+         justify-between items-center gap-4;
+}
+
+[data-theme="light"] .footer-bottom {
+  @apply border-primary-200;
+}
+
+.footer-copyright {
+  @apply text-gray-light text-sm;
+}
+
+[data-theme="light"] .footer-copyright {
+  @apply text-gray;
+}
+
+.footer-social {
+  @apply flex gap-3;
+}
+
+.footer-social-link {
+  @apply w-11 h-11 rounded-xl bg-dark-light flex items-center justify-center
+         text-gray-light transition-all duration-300;
+}
+
+[data-theme="light"] .footer-social-link {
+  @apply bg-primary-100 text-gray;
+}
+
+.footer-social-link:hover {
+  @apply bg-primary-600 text-white -translate-y-1;
+  box-shadow: 0 10px 20px rgba(51, 176, 210, 0.3);
+}
