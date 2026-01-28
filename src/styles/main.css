@@ -139,9 +139,14 @@ body {
   @apply inline-flex items-center justify-center gap-2 px-7 py-3.5
          font-semibold text-sm rounded-xl transition-all duration-300
          cursor-pointer border-2 border-transparent
-         bg-accent-500 text-dark
-         hover:bg-accent-400 hover:shadow-xl hover:shadow-accent-500/30 hover:-translate-y-0.5
+         text-white hover:shadow-xl hover:-translate-y-0.5
          active:scale-95;
+  background-color: var(--color-secondary);
+}
+
+.btn-accent:hover {
+  background-color: var(--color-secondary-light);
+  box-shadow: 0 10px 30px rgba(4, 117, 145, 0.3);
 }
 
 .btn-white {
@@ -201,12 +206,12 @@ body {
 
 .divider {
   @apply w-20 h-1.5 rounded-full;
-  background: linear-gradient(90deg, var(--color-primary-600), var(--color-accent-500));
+  background: linear-gradient(90deg, var(--color-primary-600), var(--color-secondary));
 }
 
 .divider-center {
   @apply w-20 h-1.5 rounded-full mx-auto;
-  background: linear-gradient(90deg, var(--color-primary-600), var(--color-accent-500));
+  background: linear-gradient(90deg, var(--color-primary-600), var(--color-secondary));
 }
 
 .badge {
@@ -221,8 +226,8 @@ body {
 
 .badge-accent {
   @apply inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold;
-  background: linear-gradient(135deg, var(--color-accent-50), var(--color-accent-100));
-  color: var(--color-accent-700);
+  background: var(--color-gray-light);
+  color: var(--color-dark);
 }
 
 /* Glass Effect */
@@ -258,7 +263,7 @@ body {
 
 .floating-shape-accent {
   @apply absolute w-72 h-72 rounded-full blur-3xl;
-  background: var(--color-accent-500);
+  background: var(--color-secondary);
   opacity: 0.1;
 }
 
@@ -315,7 +320,7 @@ body {
 
 [data-theme="light"] .premium-glass-card:hover {
   background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 20px 40px rgba(51, 176, 210, 0.15);
+  box-shadow: 0 20px 40px rgba(56, 181, 211, 0.15);
 }
 
 [data-theme="light"] .premium-glass-card .text-white {
@@ -335,13 +340,13 @@ body {
   @apply absolute inset-0 z-10;
   background: linear-gradient(135deg,
     rgba(15, 23, 42, 0.85) 0%,
-    rgba(51, 176, 210, 0.3) 100%);
+    rgba(56, 181, 211, 0.3) 100%);
 }
 
 [data-theme="light"] .dark-image-overlay::before {
   background: linear-gradient(135deg,
     rgba(255, 255, 255, 0.7) 0%,
-    rgba(51, 176, 210, 0.4) 100%);
+    rgba(56, 181, 211, 0.4) 100%);
 }
 
 .dark-image-overlay img {
@@ -409,25 +414,25 @@ body {
   @apply text-gray-light;
 }
 
-/* Accent text (yellow) - darker in light theme for better readability */
-[data-theme="light"] .text-accent-400 {
-  color: var(--color-accent-600) !important;
+/* Accent text - darker in light theme for better readability */
+[data-theme="light"] .text-accent {
+  color: var(--color-accent-dark) !important;
 }
 
 /* Icon backgrounds in premium cards and CTA sections - lighter in light theme */
 [data-theme="light"] .premium-glass-card [style*="background: linear-gradient"] {
   background: linear-gradient(135deg, var(--color-primary-300), var(--color-primary-400)) !important;
-  box-shadow: 0 10px 30px rgba(51, 176, 210, 0.2) !important;
+  box-shadow: 0 10px 30px rgba(56, 181, 211, 0.2) !important;
 }
 
 [data-theme="light"] .cta-section [style*="background: linear-gradient(135deg, var(--color-primary-500)"] {
   background: linear-gradient(135deg, var(--color-primary-300), var(--color-primary-400)) !important;
-  box-shadow: 0 10px 30px rgba(51, 176, 210, 0.2) !important;
+  box-shadow: 0 10px 30px rgba(56, 181, 211, 0.2) !important;
 }
 
 [data-theme="light"] .process-card [style*="background: linear-gradient"] {
   background: linear-gradient(135deg, var(--color-primary-300), var(--color-primary-400)) !important;
-  box-shadow: 0 10px 30px rgba(51, 176, 210, 0.2) !important;
+  box-shadow: 0 10px 30px rgba(56, 181, 211, 0.2) !important;
 }
 
 /* ============================================
@@ -450,7 +455,7 @@ body {
 }
 
 .form-input:focus {
-  box-shadow: 0 0 0 4px rgba(51, 176, 210, 0.1);
+  box-shadow: 0 0 0 4px rgba(56, 181, 211, 0.1);
 }
 
 .form-textarea {

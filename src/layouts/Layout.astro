@@ -19,7 +19,7 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,14 +42,6 @@ const base = import.meta.env.BASE_URL;
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
     rel="stylesheet"
   />
-
-  <!-- Theme initialization script (prevents flash of unstyled content) -->
-  <script is:inline>
-    (function() {
-      const theme = localStorage.getItem('theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', theme);
-    })();
-  </script>
 
   <title>{title}</title>
 </head>

@@ -11,7 +11,7 @@
 .why-section::before {
   content: "";
   @apply absolute top-0 right-0 w-1/2 h-full;
-  background: linear-gradient(135deg, transparent 0%, rgba(51, 176, 210, 0.03) 100%);
+  background: linear-gradient(135deg, transparent 0%, rgba(56, 181, 211, 0.03) 100%);
   border-radius: 0 0 0 100px;
 }
 
@@ -27,7 +27,7 @@
 .why-image::before {
   content: "";
   @apply absolute inset-0 z-10;
-  background: linear-gradient(135deg, rgba(51, 176, 210, 0.1) 0%, transparent 50%);
+  background: linear-gradient(135deg, rgba(56, 181, 211, 0.1) 0%, transparent 50%);
 }
 
 .why-image img {

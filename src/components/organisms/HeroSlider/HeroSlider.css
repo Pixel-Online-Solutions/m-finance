@@ -1,7 +1,7 @@
 @import "../../../styles/theme.css" reference;
 
 /* ============================================
-   HERO SLIDER - Profesjonalny slider
+   HERO BANNER - Prosty baner główny
    ============================================ */
 
 .hero-wrapper {
@@ -9,11 +9,11 @@
   padding: 0;
 }
 
-.hero-slider {
+.hero-banner {
   @apply relative overflow-hidden;
-  height: 90vh;
-  min-height: 600px;
-  max-height: 850px;
+  height: 45vh;
+  min-height: 350px;
+  max-height: 500px;
   margin: 0 auto;
   max-width: calc(100% - 4rem);
   border-radius: 3rem;
@@ -21,129 +21,69 @@
 }
 
 @media (max-width: 768px) {
-  .hero-slider {
+  .hero-banner {
     max-width: calc(100% - 2rem);
-    margin: 0 auto;
     border-radius: 2rem;
-    height: 75vh;
+    height: 50vh;
+    min-height: 300px;
   }
 }
 
-.slider-container {
+.banner-background {
   @apply relative w-full h-full;
-}
-
-.slide {
-  @apply absolute inset-0 w-full h-full opacity-0 transition-opacity duration-1000;
   background-size: cover;
   background-position: center;
 }
 
-.slide.active {
-  @apply opacity-100;
-}
-
-.slide-overlay {
+.banner-overlay {
   @apply absolute inset-0;
   background: linear-gradient(
     135deg,
-    rgba(15, 57, 69, 0.88) 0%,
-    rgba(33, 122, 147, 0.78) 50%,
-    rgba(51, 176, 210, 0.65) 100%
+    rgba(15, 57, 69, 0.65) 0%,
+    rgba(33, 122, 147, 0.55) 50%,
+    rgba(56, 181, 211, 0.45) 100%
   );
 }
 
-.slide-content {
+.banner-content {
   @apply absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4;
   z-index: 10;
 }
 
-.slide-badge {
-  @apply inline-flex items-center px-5 py-2 rounded-full text-sm font-medium mb-8;
+.banner-badge {
+  @apply inline-flex items-center px-5 py-2 rounded-full text-sm font-medium mb-6;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  animation: slide-down 0.8s ease-out;
 }
 
-.slide-title {
-  @apply font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6;
-  animation: slide-up 0.8s ease-out 0.2s both;
+.banner-title {
+  @apply font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4;
   text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
-.slide-subtitle {
-  @apply text-lg md:text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto mb-10;
-  animation: slide-up 0.8s ease-out 0.4s both;
+.banner-subtitle {
+  @apply text-base md:text-lg lg:text-xl text-white/90 max-w-2xl mx-auto mb-8;
 }
 
-.slide-buttons {
+.banner-buttons {
   @apply flex flex-col sm:flex-row items-center gap-4;
-  animation: slide-up 0.8s ease-out 0.6s both;
 }
 
-/* Slider Navigation */
-.slider-dots {
-  @apply absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 z-20;
-}
-
-.slider-dot {
-  @apply w-3 h-3 rounded-full transition-all duration-300 cursor-pointer;
-  background: rgba(255, 255, 255, 0.4);
-  border: none;
-}
-
-.slider-dot:hover {
-  background: rgba(255, 255, 255, 0.7);
-  transform: scale(1.2);
-}
-
-.slider-dot.active {
-  @apply w-10;
-  background: var(--color-accent-500);
-  border-radius: 1rem;
-}
-
-/* Slider Arrows */
-.slider-arrow {
-  @apply absolute top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-2xl
-         flex items-center justify-center text-white cursor-pointer
-         transition-all duration-300;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.slider-arrow:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.slider-arrow-prev {
-  @apply left-6;
-}
-
-.slider-arrow-next {
-  @apply right-6;
-}
-
-/* Hide slider arrows on mobile */
 @media (max-width: 768px) {
-  .slider-arrow {
-    display: none;
+  .banner-badge {
+    @apply mb-4 text-xs px-4 py-1.5;
   }
-}
 
-/* Scroll Indicator */
-.scroll-indicator {
-  @apply absolute bottom-8 right-8 flex flex-col items-center gap-2 text-white/70 text-xs z-20;
-  animation: float 3s ease-in-out infinite;
-}
+  .banner-title {
+    @apply text-2xl mb-3;
+  }
 
-.scroll-mouse {
-  @apply w-6 h-10 rounded-full border-2 border-white/30 flex justify-center pt-2;
-}
+  .banner-subtitle {
+    @apply text-sm mb-6;
+  }
 
-.scroll-wheel {
-  @apply w-1 h-2 bg-white/70 rounded-full;
-  animation: scroll-bounce 2s ease-in-out infinite;
+  .banner-buttons {
+    @apply gap-3;
+  }
 }

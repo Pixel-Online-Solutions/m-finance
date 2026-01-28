@@ -25,7 +25,7 @@
 
 [data-theme="light"] .process-card:hover {
   background: rgba(15, 23, 42, 0.06);
-  box-shadow: 0 10px 30px rgba(51, 176, 210, 0.15);
+  box-shadow: 0 10px 30px rgba(56, 181, 211, 0.15);
 }
 
 .process-card-number {
@@ -33,7 +33,7 @@
          flex items-center justify-center text-2xl font-bold mx-auto mb-6
          transition-all duration-300;
   background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
-  box-shadow: 0 10px 30px rgba(51, 176, 210, 0.3);
+  box-shadow: 0 10px 30px rgba(56, 181, 211, 0.3);
 }
 
 .process-card:hover .process-card-number {
