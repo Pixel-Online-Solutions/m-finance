@@ -1,10 +1,12 @@
-dodać mały pasek nad banerem
-zmienić tło pod banerem 
+[x] dodać mały biały pasek/odstęp nad banerem i navibar wyrównać do baneru
+[x] "Twój zaufany partner w prowadzeniu księgowości i rozliczeń podatkowych od 2017 roku." wrzucić jako teskt do baneru, a usuąć ten tekst z footera
+[x] zmienić tło pod banerem na to które jest w jasnej sekcji
+
 sekcję "ciemną" zrobić ciemniejszą
-zmniejszyć odstępy pomiędzy sekcjami
-sekcje zrobić zaokrąglone jak baner w hero
-poprawić kolory czcionek w sekcji nad footerem
+[x] sekcje "ciemną" zrobić zaokrągloną jak baner w hero (z odstępami z prawej i lewej strony ekranu)
+zmniejszyć odstępy pomiędzy sekcjami, trochę ścieśnić odstępy pomiędzy sekcjcami
+
+poprawić kolory czcionek w sekcji nad footerem, teraz są niewidoczne
 te przyciski, banerki w "jak pracujemy" są ładnie animowane, zostawić je i opisać jako "lorem ipsum"
-w footerze hyperlinki jak "strona główna" itp w nawigacji mają tylko zmieniać kolor, a nie się przesuwać
-kontakt w footerze po najechaniu napis ma zmieniać kolor na ciemniejszy
-"Twój zaufany partner w prowadzeniu księgowości i rozliczeń podatkowych od 2017 roku." wrzucić jako teskt do baneru, a usuąć ten tekst z footera
+w footerze hyperlinki jak "strona główna", "o nas" itp. w nawigacji mają tylko zmieniać kolor, a nie się przesuwać
+kontakt w footerze po najechaniu napis ma zmieniać kolor na ciemniejszy bez poruszania się

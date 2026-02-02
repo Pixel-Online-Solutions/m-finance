@@ -5,9 +5,20 @@
    ============================================ */
 
 .cta-section {
-  @apply text-white py-24 relative overflow-hidden;
-  background: linear-gradient(135deg, var(--color-primary-800) 0%, var(--color-primary-900) 100%);
+  @apply text-white py-12 md:py-16 relative overflow-hidden;
+  background: linear-gradient(135deg, #000508 0%, #020f15 50%, #031a20 100%);
   transition: background 0.3s ease, color 0.3s ease;
+  margin: 0.5rem auto;
+  max-width: calc(100% - 4rem);
+  border-radius: 3rem;
+}
+
+@media (max-width: 768px) {
+  .cta-section {
+    max-width: calc(100% - 2rem);
+    border-radius: 2rem;
+    margin: 0.5rem auto;
+  }
 }
 
 .cta-section::before {

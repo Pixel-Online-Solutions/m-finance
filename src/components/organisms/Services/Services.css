@@ -9,7 +9,8 @@
 }
 
 .service-card {
-  @apply bg-white rounded-3xl p-8 transition-all duration-500;
+  @apply rounded-3xl p-8 transition-all duration-500;
+  background: transparent;
   border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }

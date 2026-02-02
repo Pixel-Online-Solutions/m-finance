@@ -56,8 +56,10 @@ html {
 }
 
 body {
-  @apply font-sans text-dark bg-white antialiased;
+  @apply font-sans text-dark antialiased;
+  background: #f1f5f9;
   overflow-x: hidden;
+  line-height: 1.5;
 }
 
 /* ============================================
@@ -73,21 +75,48 @@ body {
 }
 
 .section {
-  @apply py-20 md:py-28;
+  @apply py-4 md:py-6;
 }
 
 .section-dark {
-  @apply bg-dark text-white py-20 md:py-28;
+  background: #f1f5f9;
+  @apply text-dark py-4 md:py-6;
   transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0.5rem auto;
+  max-width: calc(100% - 4rem);
+  border-radius: 3rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .section-dark {
+    max-width: calc(100% - 2rem);
+    border-radius: 2rem;
+    margin: 0.5rem auto;
+  }
 }
 
 /* Light theme version of dark sections */
 [data-theme="light"] .section-dark {
-  @apply bg-light text-dark;
+  background: #f1f5f9;
+  @apply text-dark;
 }
 
 .section-light {
-  @apply bg-light py-20 md:py-28;
+  background: #f1f5f9;
+  @apply py-4 md:py-6;
+  margin: 0.5rem auto;
+  max-width: calc(100% - 4rem);
+  border-radius: 3rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .section-light {
+    max-width: calc(100% - 2rem);
+    border-radius: 2rem;
+    margin: 0.5rem auto;
+  }
 }
 
 /* ============================================
