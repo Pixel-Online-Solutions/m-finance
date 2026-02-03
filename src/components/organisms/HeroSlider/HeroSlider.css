@@ -8,6 +8,7 @@
   @apply relative;
   background: #f1f5f9;
   padding: 1.5rem 0 0 0;
+  margin-bottom: 2rem;
 }
 
 @media (max-width: 768px) {
@@ -51,8 +52,9 @@
 }
 
 .banner-content {
-  @apply absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4;
+  @apply absolute inset-0 flex flex-col items-center justify-end text-center text-white px-4;
   z-index: 1;
+  padding-bottom: 1.5rem;
 }
 
 .banner-badge {

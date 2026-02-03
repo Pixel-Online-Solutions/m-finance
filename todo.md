@@ -10,9 +10,9 @@
 [x] te przyciski, banerki w "jak pracujemy" są ładnie animowane, zostawić je i opisać jako "lorem ipsum"
 [x] w footerze hyperlinki jak "strona główna", "o nas" itp. w nawigacji mają tylko zmieniać kolor, a nie się przesuwać
 [x] kontakt w footerze po najechaniu napis ma zmieniać kolor na ciemniejszy bez poruszania się
-[] wyrównać navbar do banera
-[] w O Nas: O Nas i tekst pod nim zostaje w gradient banerze. przyciski przenosimy i robimy na kształt tych pod sekcją Hero na Stronie Głównej
-[] w O Nas: obszar "roboczy", czyli tam gdzie znajdują się przyciski ma być tak szeroki jak w Stronie Głównej (czyli szerszy od navbara)
+[x] wyrównać navbar do banera
+[x] w O Nas: O Nas i tekst pod nim zostaje w gradient banerze. przyciski przenosimy i robimy na kształt tych pod sekcją Hero na Stronie Głównej
+[x] w O Nas: obszar "roboczy", czyli tam gdzie znajdują się przyciski ma być tak szeroki jak w Stronie Głównej (czyli szerszy od navbara)
 
 
 

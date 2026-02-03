@@ -8,17 +8,26 @@
   @apply text-white py-16 md:py-25 relative overflow-hidden;
   background: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-primary-800) 100%);
   transition: background 0.3s ease, color 0.3s ease;
-  margin: -5.52rem auto 0;
+  margin: 3rem auto 0;
   max-width: calc(100% - 4rem);
   border-radius: 3rem;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+}
+
+/* Gradient bannery na podstronach (w hero-wrapper) wjeżdżają pod navbar */
+.hero-wrapper .why-us-section {
+  margin-top: -5.52rem;
 }
 
 @media (max-width: 768px) {
   .why-us-section {
     max-width: calc(100% - 2rem);
     border-radius: 2rem;
-    margin: -5rem auto 0;
+    margin-top: 2rem;
+  }
+
+  .hero-wrapper .why-us-section {
+    margin-top: -5rem;
   }
 }
 
