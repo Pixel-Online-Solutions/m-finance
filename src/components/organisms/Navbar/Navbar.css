@@ -62,6 +62,15 @@
   background-clip: text;
 }
 
+.navbar-logo-link {
+  @apply flex items-center flex-shrink-0;
+}
+
+.navbar-logo-img {
+  @apply w-auto;
+  height: 2.5rem; /* 40px - podniesione o 1/4 wysokości (2rem * 1.25 = 2.5rem) */
+}
+
 .navbar-menu {
   @apply hidden lg:flex items-center gap-1;
 }

@@ -5,7 +5,7 @@
    ============================================ */
 
 .footer {
-  @apply bg-dark text-white pt-20 pb-8 relative;
+  @apply bg-dark text-white pt-12 pb-6 relative;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -25,7 +25,7 @@
 }
 
 .footer-grid {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16;
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10;
 }
 
 .footer-logo {
@@ -45,7 +45,7 @@
 }
 
 .footer-title {
-  @apply font-heading font-semibold text-lg mb-6 text-white;
+  @apply font-heading font-semibold text-lg mb-4 text-white;
 }
 
 [data-theme="light"] .footer-title {
@@ -53,12 +53,12 @@
 }
 
 .footer-links {
-  @apply space-y-3;
+  @apply space-y-2;
 }
 
 .footer-link {
-  @apply block text-gray-light text-sm transition-all duration-300
-         hover:text-white hover:translate-x-2;
+  @apply block text-gray-light text-sm transition-colors duration-300
+         hover:text-white;
 }
 
 [data-theme="light"] .footer-link {
@@ -66,7 +66,7 @@
 }
 
 .footer-contact-item {
-  @apply flex items-start gap-4 text-gray-light text-sm mb-5;
+  @apply flex items-start gap-4 text-gray-light text-sm mb-4;
 }
 
 [data-theme="light"] .footer-contact-item {
@@ -83,8 +83,8 @@
 }
 
 .footer-bottom {
-  @apply border-t border-dark-light pt-8 flex flex-col md:flex-row
-         justify-between items-center gap-4;
+  @apply border-t border-dark-light pt-6 flex flex-col md:flex-row
+         justify-center items-center gap-4;
 }
 
 [data-theme="light"] .footer-bottom {

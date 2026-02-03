@@ -9,16 +9,16 @@
 }
 
 .service-card {
-  @apply rounded-3xl p-8 transition-all duration-500;
-  background: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  @apply rounded-2xl p-8 transition-all duration-300;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .service-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 60px rgba(56, 181, 211, 0.12);
-  border-color: rgba(56, 181, 211, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(56, 181, 211, 0.15);
+  border-color: rgba(56, 181, 211, 0.2);
 }
 
 .service-card-icon {

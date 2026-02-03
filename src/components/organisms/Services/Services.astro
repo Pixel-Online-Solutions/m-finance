@@ -81,17 +81,16 @@ const icons: Record<string, string> = {
     </div>
 
     <!-- Services Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative">
+    <div class="services-grid">
       {services.map((service) => (
-        <article class="process-card">
-          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 transition-all duration-300"
-               style="background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700)); box-shadow: 0 10px 30px rgba(51, 176, 210, 0.3);">
-            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={icons[service.icon] || icons.calculator} />
+        <article class="service-card">
+          <div class="service-card-icon">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={icons[service.icon] || icons.calculator} />
           </div>
-          <h3 class="text-lg md:text-xl font-semibold text-dark mb-2">{service.title}</h3>
-          <p class="text-gray text-sm leading-relaxed mb-3">{service.description}</p>
+          <h3 class="service-card-title">{service.title}</h3>
+          <p class="service-card-description">{service.description}</p>
           {service.href && (
-            <a href={service.href} class="inline-flex items-center gap-2 text-primary-500 font-semibold text-sm transition-all duration-300 hover:gap-3">
+            <a href={service.href} class="service-card-link">
               Dowiedz się więcej
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
