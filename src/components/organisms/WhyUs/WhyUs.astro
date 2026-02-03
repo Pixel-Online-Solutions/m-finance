@@ -75,7 +75,18 @@ const {
                 </div>
                 <div>
                   <p class="font-bold text-white">{feature.title}</p>
-                  <p class="text-sm text-primary-200">{feature.description}</p>
+                  {feature.title === "Nagrody branżowe" ? (
+                    <p class="text-sm text-primary-200">
+                      <a href="https://www.orlyrachunkowosci.pl/profile-31832-m-finance-biuro-rachunkowe-magdalena-maciejak"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                         class="hover:text-white transition-colors underline">
+                        {feature.description}
+                      </a>
+                    </p>
+                  ) : (
+                    <p class="text-sm text-primary-200">{feature.description}</p>
+                  )}
                 </div>
               </div>
             </div>

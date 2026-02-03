@@ -11,6 +11,10 @@
 [x] w footerze hyperlinki jak "strona główna", "o nas" itp. w nawigacji mają tylko zmieniać kolor, a nie się przesuwać
 [x] kontakt w footerze po najechaniu napis ma zmieniać kolor na ciemniejszy bez poruszania się
 [] wyrównać navbar do banera
-[] w Stronie Głównej: przyciski pod "Nasze usługi": tekst w środku przycisków i ikonki wycentrować na wysokość, ikonka idzie na środek szerokości
 [] w O Nas: O Nas i tekst pod nim zostaje w gradient banerze. przyciski przenosimy i robimy na kształt tych pod sekcją Hero na Stronie Głównej
 [] w O Nas: obszar "roboczy", czyli tam gdzie znajdują się przyciski ma być tak szeroki jak w Stronie Głównej (czyli szerszy od navbara)
+
+
+
+wersja na telefon
+[] w Stronie Głównej: przyciski pod "Nasze usługi": pogrubiony tekst w środku przycisków i ikonki wycentrować na szerokość, ikonka idzie na środek szerokości
