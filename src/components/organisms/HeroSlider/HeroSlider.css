@@ -18,10 +18,8 @@
 
 .hero-banner {
   @apply relative overflow-hidden;
-  height: 45vh;
-  min-height: 350px;
-  max-height: 500px;
-  margin: -5.25rem auto 0;
+  padding: 14.5rem 2rem 6rem 2rem;
+  margin: -5.52rem auto 0;
   max-width: calc(100% - 4rem);
   border-radius: 3rem;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
@@ -31,14 +29,13 @@
   .hero-banner {
     max-width: calc(100% - 2rem);
     border-radius: 2rem;
-    height: 50vh;
-    min-height: 300px;
+    padding: 7rem 1.5rem 4rem 1.5rem;
     margin-top: -5rem;
   }
 }
 
 .banner-background {
-  @apply relative w-full h-full;
+  @apply absolute inset-0 w-full h-full;
   background-size: cover;
   background-position: center;
 }
