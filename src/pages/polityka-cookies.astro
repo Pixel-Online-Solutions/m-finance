@@ -1,56 +1,75 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import '../components/organisms/WhyUs/WhyUs.css';
+import '../components/organisms/HeroSlider/HeroSlider.css';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Polityka cookies - M-Finance" currentPath="/polityka-cookies">
 
-  <!-- Hero Section -->
-  <section class="section-dark min-h-[40vh] flex items-center">
-    <div class="container">
+  <div class="hero-wrapper">
+    <section class="why-us-section" id="polityka-cookies">
+    <!-- Decorative floating shapes -->
+    <div class="floating-shapes">
+      <div class="floating-shape-accent" style="top: 10%; left: 10%;"></div>
+      <div class="floating-shape-primary" style="bottom: 10%; right: 10%;"></div>
+      <div class="floating-shape-white w-[600px] h-[600px]" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+    </div>
+
+    <div class="container relative z-10">
       <div class="max-w-4xl mx-auto text-center">
-        <span class="text-xs font-semibold uppercase tracking-wider text-primary-500 mb-4 block">
-          Informacje prawne
-        </span>
-        <h1 class="heading-1 text-white mb-6">Polityka cookies</h1>
+        <h2 class="heading-2 text-white mb-6">Polityka cookies</h2>
       </div>
     </div>
   </section>
+  </div>
 
   <!-- Content Section -->
-  <section class="section">
+  <section class="section-dark">
     <div class="container">
-      <div class="max-w-4xl mx-auto prose prose-lg">
+      <div class="max-w-4xl mx-auto">
 
-        <h2 class="heading-3 mb-4">Czym są pliki cookie?</h2>
-        <p class="text-body mb-8">
-          Cookie to niewielkie pliki tekstowe wysyłane przez odwiedzane strony internetowe i zapisywane na komputerze użytkownika. Informacje zawarte w tych plikach pozwalają na odczyt wyłącznie przez stronę która je utworzyła.
-        </p>
+        <div class="bg-white rounded-2xl p-8 md:p-12 shadow-lg space-y-8">
 
-        <h2 class="heading-3 mb-4">W jakim celu stosujemy pliki cookie?</h2>
-        <p class="text-body mb-4">
-          Pliki te na naszej stronie używane są w obszarach:
-        </p>
-
-        <div class="space-y-6 mb-8">
-          <div class="bg-light p-6 rounded-2xl">
-            <h3 class="font-semibold text-dark text-xl mb-3">Sesja</h3>
-            <p class="text-body">
-              Pozwalają one na personalizację działania użytkownika (zalogowanie, zmiana układu strony itp.) podczas działania przeglądarki. Sesja strony otwierana jest przy jej załadowaniu i zamykana podczas zamknięcia przeglądarki. Po zamknięciu przeglądarki, wszystkie sesyjne pliki cookie są usuwane. Pliki te mogą być niezbędne do poprawnego działania strony.
+          <div>
+            <h3 class="text-2xl font-bold text-dark mb-4">Czym są pliki cookie?</h3>
+            <p class="text-gray leading-relaxed">
+              Cookie to niewielkie pliki tekstowe wysyłane przez odwiedzane strony internetowe i zapisywane na komputerze użytkownika. Informacje zawarte w tych plikach pozwalają na odczyt wyłącznie przez stronę która je utworzyła.
             </p>
           </div>
 
-          <div class="bg-light p-6 rounded-2xl">
-            <h3 class="font-semibold text-dark text-xl mb-3">Analityka</h3>
-            <p class="text-body">
-              Pozwalają one na anonimowe zbieranie informacji (bez identyfikacji poszczególnych użytkowników) o wejściach na stronę, dzięki którym można określać statystyki odwiedzin/oglądalności strony.
+          <div>
+            <h3 class="text-2xl font-bold text-dark mb-4">W jakim celu stosujemy pliki cookie?</h3>
+            <p class="text-gray leading-relaxed mb-4">
+              Pliki te na naszej stronie używane są w obszarach:
+            </p>
+
+            <div class="space-y-6">
+              <div class="pl-4 border-l-4 border-primary-500">
+                <h4 class="text-lg font-bold text-dark mb-2">Sesja</h4>
+                <p class="text-gray leading-relaxed">
+                  Pozwalają one na personalizację działania użytkownika (zalogowanie, zmiana układu strony itp.) podczas działania przeglądarki. Sesja strony otwierana jest przy jej załadowaniu i zamykana podczas zamknięcia przeglądarki. Po zamknięciu przeglądarki, wszystkie sesyjne pliki cookie są usuwane. Pliki te mogą być niezbędne do poprawnego działania strony.
+                </p>
+              </div>
+
+              <div class="pl-4 border-l-4 border-primary-500">
+                <h4 class="text-lg font-bold text-dark mb-2">Analityka</h4>
+                <p class="text-gray leading-relaxed">
+                  Pozwalają one na anonimowe zbieranie informacji (bez identyfikacji poszczególnych użytkowników) o wejściach na stronę, dzięki którym można określać statystyki odwiedzin/oglądalności strony.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-bold text-dark mb-4">Jak zablokować/usunąć pliki cookie?</h3>
+            <p class="text-gray leading-relaxed">
+              Każda przeglądarka ma domyślnie włączoną obsługę plików cookie jednak wszystkie posiadają możliwość ich zablokowania lub/i usunięcia. Szczegółowe informacje na ten temat znajdują się w ustawieniach przeglądarki.
             </p>
           </div>
+
         </div>
-
-        <h2 class="heading-3 mb-4">Jak zablokować/usunąć pliki cookie?</h2>
-        <p class="text-body mb-8">
-          Każda przeglądarka ma domyślnie włączoną obsługę plików cookie jednak wszystkie posiadają możliwość ich zablokowania lub/i usunięcia. Szczegółowe informacje na ten temat znajdują się w ustawieniach przeglądarki.
-        </p>
 
       </div>
     </div>
